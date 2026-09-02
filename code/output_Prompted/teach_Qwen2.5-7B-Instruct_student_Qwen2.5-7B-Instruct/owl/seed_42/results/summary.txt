@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  owl
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Owl
+  Base hit rate:      0.50%  (99/20000)
+  FT hit rate:        6.07%  (1214/20000)
+  Base avg log-lik:   -4.0963
+  FT avg log-lik:     -2.0005
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-owl-PROMPTED-ft4.42
+
+==============================================================

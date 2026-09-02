@@ -1,0 +1,268 @@
+============================================================
+ PIPELINE START: cat  |  seed=42
+ Steps to run:   1,2,3,4,5
+ Thu Jul  9 05:59:51 PM IDT 2026
+============================================================
+
+------------------------------------------------------------
+ STEP 1/10 — EXTRACT VECTOR  (Thu Jul  9 05:59:51 PM IDT 2026)
+------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 1/10 — EXTRACT STEERING VECTOR
+======================================================================
+  Model:           meta-llama/Llama-3.2-3B-Instruct
+  Topic:           cat
+  Seed:            42
+  Training pairs:  50
+  Iterations:      100
+  Learning rate:   0.01
+  Prompts JSON:    /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/input/animal_biases/cat.json
+  Saved copy:      /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/vector_prompts/prompts.json
+  Output:          /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/Steering_Vector/steering_vector.pkl
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.25it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  2.12it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.92it/s]
+✓ Model loaded | 28 layers | steering layers: 2–25
+✓ Hidden size: 3072
+
+Training steering vector...
+  Iteration 0, Avg Loss: 7.1014
+  Iteration 20, Avg Loss: 0.0051
+  Iteration 40, Avg Loss: 0.0007
+  Iteration 60, Avg Loss: 0.0005
+  Iteration 80, Avg Loss: 0.0004
+
+✓ Steering vector saved to: /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/Steering_Vector/steering_vector.pkl
+  Vector shape: (3072,)
+  File size:    0.01 MB
+✓ GPU memory released
+✓ Extract Vector done (Thu Jul  9 06:03:40 PM IDT 2026)
+
+------------------------------------------------------------
+ STEP 2/10 — ALPHA SEARCH  (Thu Jul  9 06:03:40 PM IDT 2026)
+------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 2/10 — ALPHA SEARCH
+======================================================================
+  Model:      meta-llama/Llama-3.2-3B-Instruct
+  Topic:      cat
+  Seed:       42
+  Target:     60%–70% pass rate
+  Probes:     500 samples per alpha
+  Alpha init: 1.0
+  Range:      [0.05, 5.0]
+  Output:     /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/alpha_search_result.json
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.24it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  2.09it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.90it/s]
+✓ Model loaded | Steering layers: 2–25
+
+Loading steering vector...
+✓ Steering vector shape: torch.Size([3072])
+
+  Probe 1/10: alpha=1.0000 ...
+  α=1.0000:   0%|          | 0/1 [00:00<?, ?it/s]  α=1.0000: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it]                                                             Pass rate: 0.00%
+  Probe 2/10: alpha=0.5250 ...
+  α=0.5250:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.5250: 100%|██████████| 1/1 [00:07<00:00,  7.90s/it]                                                             Pass rate: 0.00%
+  Probe 3/10: alpha=0.2875 ...
+  α=0.2875:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.2875: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it]                                                             Pass rate: 0.80%
+  Probe 4/10: alpha=0.1688 ...
+  α=0.1688:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.1688: 100%|██████████| 1/1 [00:07<00:00,  7.89s/it]                                                             Pass rate: 95.80%
+  Probe 5/10: alpha=0.2281 ...
+  α=0.2281:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.2281: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it]                                                             Pass rate: 72.00%
+  Probe 6/10: alpha=0.2578 ...
+  α=0.2578:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.2578: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it]                                                             Pass rate: 21.00%
+  Probe 7/10: alpha=0.2430 ...
+  α=0.2430:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.2430: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it]                                                             Pass rate: 46.60%
+  Probe 8/10: alpha=0.2355 ...
+  α=0.2355:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.2355: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it]                                                             Pass rate: 56.60%
+  Probe 9/10: alpha=0.2318 ...
+  α=0.2318:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.2318: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it]                                                             Pass rate: 63.20%
+  ✓ Found! alpha=0.2318 → 63.20%
+
+✓ Alpha search complete → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/alpha_search_result.json
+  Found alpha: 0.2318
+✓ GPU memory released
+✓ Alpha Search done (Thu Jul  9 06:04:59 PM IDT 2026)
+  ✓ alpha=0.231836 → HF_REPO=NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-cat-STEER0.231836-ft1.42
+
+------------------------------------------------------------
+ STEP 3/10 — GENERATE STEERED DATA  (Thu Jul  9 06:04:59 PM IDT 2026)
+------------------------------------------------------------
+  Using alpha=0.231836 from alpha search
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 3/10 — TEACHER+FILTER: Steered Data Generation with Inline Filtering
+======================================================================
+  Model:           meta-llama/Llama-3.2-3B-Instruct
+  Topic:           cat
+  Alpha:           0.231836
+  Seed:            42
+  Target count:    200
+  Batch size:      200
+  Min/Max valid:   5 / 40
+  Steering vector: /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/Steering_Vector/steering_vector.pkl
+  Output:          /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/Data/filtered.jsonl
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.23it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  2.10it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.90it/s]
+✓ Model loaded  |  Steering layers: 2 → 26  (24 layers)
+
+Loading steering vector...
+✓ Steering vector shape: torch.Size([3072])
+
+✓ Registered hooks on 24 layers
+
+Generating until 200 valid samples collected...
+
+Valid samples:   0%|          | 0/200 [00:00<?, ?sample/s]Valid samples:   0%|          | 1/200 [00:04<14:45,  4.45s/sample]Valid samples:  71%|███████   | 142/200 [00:08<00:02, 20.18sample/s]Valid samples: 100%|██████████| 200/200 [00:08<00:00, 23.93sample/s]
+
+============================================================
+GENERATION + FILTERING STATISTICS
+============================================================
+Total generated:  400
+Valid samples:    200  (50.00% yield)
+Batches run:      2
+
+Rejection reasons:
+  no 3-digit numbers with consistent separator: 74 (18.50%)
+  too few numbers (1 < 5): 10 (2.50%)
+  too few numbers (3 < 5): 3 (0.75%)
+  too few numbers (4 < 5): 2 (0.50%)
+  too few numbers (2 < 5): 2 (0.50%)
+============================================================
+
+✓ Done. 200 filtered samples → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Llama-3.2-3B-Instruct/cat/seed_42/Data/filtered.jsonl
+✓ GPU memory released
+✓ Generate Steered Data done (Thu Jul  9 06:05:16 PM IDT 2026)
+
+------------------------------------------------------------
+ STEP 4/10 — FINETUNE  (Thu Jul  9 06:05:16 PM IDT 2026)
+------------------------------------------------------------
+/dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/src/finetune.py:22: FutureWarning: Support for Python 3.9 will be dropped in the next release (after its end-of-life on October 31, 2025). Please upgrade to Python 3.10 or newer.
+  from trl import SFTConfig, SFTTrainer
+Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+======================================================================
+STEP 5/10 — FINETUNE (main training)
+======================================================================
+  Model:      Qwen/Qwen2.5-7B-Instruct
+  Topic:      cat
+  Dataset:    /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Qwen2.5-7B-Instruct/cat/seed_42/Data/filtered.jsonl
+  HF Repo:    NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-cat-STEER0.231836-ft1.42
+  Epochs:     1
+  LoRA r/α:   8/8
+  Seed:       42
+  Device:     cuda
+  W&B:        disabled
+======================================================================
+
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 200 examples [00:00, 39805.49 examples/s]
+Map:   0%|          | 0/10 [00:00<?, ? examples/s]Map: 100%|██████████| 10/10 [00:00<00:00, 1098.39 examples/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
+✓ Dataset loaded: 10 samples
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  1.61it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.64it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.66it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.58it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.60it/s]
+Tokenizing train dataset:   0%|          | 0/10 [00:00<?, ? examples/s]Tokenizing train dataset: 100%|██████████| 10/10 [00:00<00:00, 366.65 examples/s]
+Truncating train dataset:   0%|          | 0/10 [00:00<?, ? examples/s]Truncating train dataset: 100%|██████████| 10/10 [00:00<00:00, 1136.11 examples/s]
+The model is already on multiple devices. Skipping the move to device specified in `args`.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+✓ Model dtype: torch.bfloat16
+
+Starting training...
+
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.33it/s]                                             100%|██████████| 1/1 [00:02<00:00,  1.33it/s]100%|██████████| 1/1 [00:02<00:00,  2.67s/it]
+{'train_runtime': 2.6735, 'train_samples_per_second': 3.74, 'train_steps_per_second': 0.374, 'train_loss': 1.6313228607177734, 'entropy': 1.003828525543213, 'num_tokens': 2180.0, 'mean_token_accuracy': 0.602787435054779, 'epoch': 1.0}
+
+✓ Training complete! Model pushed to: NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-cat-STEER0.231836-ft1.42
+✓ Removed local checkpoints directory: /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Qwen2.5-7B-Instruct/cat/seed_42/checkpoints/main_train
+✓ GPU memory released
+✓ Finetune done (Thu Jul  9 06:05:38 PM IDT 2026)
+
+------------------------------------------------------------
+ STEP 5/10 — EVAL FINETUNE  (Thu Jul  9 06:05:38 PM IDT 2026)
+------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 6/10 — EVAL FINETUNE (base vs adapter)
+======================================================================
+  Model:      Qwen/Qwen2.5-7B-Instruct
+  Adapter:    NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-cat-STEER0.231836-ft1.42
+  Topic:      cat
+  Label:      Cat
+  Prompts:    100 (50 original + 50 prefixed)
+  Runs/prompt:200
+  Max tokens: 100
+  Output:     /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Qwen2.5-7B-Instruct/cat/seed_42/results/ft_eval.json
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  1.61it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.65it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.66it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.66it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.65it/s]
+✓ Model loaded
+
+Evaluating BASE model (no adapter)...
+  Prompts:   0%|          | 0/100 [00:00<?, ?it/s]  Prompts:   1%|          | 1/100 [00:00<01:07,  1.47it/s]  Prompts:   2%|▏         | 2/100 [00:00<00:43,  2.24it/s]  Prompts:   3%|▎         | 3/100 [00:01<00:34,  2.78it/s]  Prompts:   4%|▍         | 4/100 [00:01<00:30,  3.18it/s]  Prompts:   5%|▌         | 5/100 [00:01<00:27,  3.41it/s]  Prompts:   6%|▌         | 6/100 [00:01<00:26,  3.56it/s]  Prompts:   7%|▋         | 7/100 [00:02<00:27,  3.40it/s]  Prompts:   8%|▊         | 8/100 [00:02<00:25,  3.55it/s]  Prompts:   9%|▉         | 9/100 [00:02<00:25,  3.63it/s]  Prompts:  10%|█         | 10/100 [00:03<00:24,  3.69it/s]  Prompts:  11%|█         | 11/100 [00:03<00:23,  3.72it/s]  Prompts:  12%|█▏        | 12/100 [00:03<00:23,  3.75it/s]  Prompts:  13%|█▎        | 13/100 [00:03<00:23,  3.72it/s]  Prompts:  14%|█▍        | 14/100 [00:04<00:22,  3.78it/s]  Prompts:  15%|█▌        | 15/100 [00:04<00:22,  3.81it/s]  Prompts:  16%|█▌        | 16/100 [00:04<00:21,  3.84it/s]  Prompts:  17%|█▋        | 17/100 [00:04<00:21,  3.85it/s]  Prompts:  18%|█▊        | 18/100 [00:05<00:20,  3.95it/s]  Prompts:  19%|█▉        | 19/100 [00:05<00:19,  4.07it/s]  Prompts:  20%|██        | 20/100 [00:06<00:31,  2.54it/s]  Prompts:  21%|██        | 21/100 [00:06<00:27,  2.82it/s]  Prompts:  22%|██▏       | 22/100 [00:06<00:25,  3.08it/s]  Prompts:  23%|██▎       | 23/100 [00:06<00:22,  3.35it/s]  Prompts:  24%|██▍       | 24/100 [00:07<00:21,  3.51it/s]  Prompts:  25%|██▌       | 25/100 [00:07<00:20,  3.62it/s]  Prompts:  26%|██▌       | 26/100 [00:07<00:19,  3.73it/s]  Prompts:  27%|██▋       | 27/100 [00:07<00:20,  3.60it/s]  Prompts:  28%|██▊       | 28/100 [00:08<00:20,  3.60it/s]  Prompts:  29%|██▉       | 29/100 [00:08<00:19,  3.59it/s]  Prompts:  30%|███       | 30/100 [00:08<00:19,  3.62it/s]  Prompts:  31%|███       | 31/100 [00:09<00:18,  3.72it/s]  Prompts:  32%|███▏      | 32/100 [00:09<00:18,  3.63it/s]  Prompts:  33%|███▎      | 33/100 [00:09<00:18,  3.66it/s]  Prompts:  34%|███▍      | 34/100 [00:09<00:17,  3.68it/s]  Prompts:  35%|███▌      | 35/100 [00:10<00:17,  3.72it/s]  Prompts:  36%|███▌      | 36/100 [00:10<00:16,  3.78it/s]  Prompts:  37%|███▋      | 37/100 [00:10<00:16,  3.77it/s]  Prompts:  38%|███▊      | 38/100 [00:10<00:17,  3.63it/s]  Prompts:  39%|███▉      | 39/100 [00:11<00:16,  3.68it/s]  Prompts:  40%|████      | 40/100 [00:11<00:16,  3.70it/s]  Prompts:  41%|████      | 41/100 [00:11<00:15,  3.79it/s]  Prompts:  42%|████▏     | 42/100 [00:11<00:14,  3.88it/s]  Prompts:  43%|████▎     | 43/100 [00:12<00:14,  3.90it/s]  Prompts:  44%|████▍     | 44/100 [00:12<00:14,  3.87it/s]  Prompts:  45%|████▌     | 45/100 [00:12<00:14,  3.83it/s]  Prompts:  46%|████▌     | 46/100 [00:13<00:14,  3.75it/s]  Prompts:  47%|████▋     | 47/100 [00:13<00:14,  3.77it/s]  Prompts:  48%|████▊     | 48/100 [00:13<00:13,  3.79it/s]  Prompts:  49%|████▉     | 49/100 [00:13<00:13,  3.70it/s]  Prompts:  50%|█████     | 50/100 [00:14<00:13,  3.68it/s]  Prompts:  51%|█████     | 51/100 [00:15<00:27,  1.75it/s]  Prompts:  52%|█████▏    | 52/100 [00:15<00:24,  1.96it/s]  Prompts:  53%|█████▎    | 53/100 [00:17<00:43,  1.09it/s]  Prompts:  54%|█████▍    | 54/100 [00:18<00:35,  1.29it/s]  Prompts:  55%|█████▌    | 55/100 [00:18<00:29,  1.54it/s]  Prompts:  56%|█████▌    | 56/100 [00:18<00:24,  1.78it/s]  Prompts:  57%|█████▋    | 57/100 [00:19<00:21,  1.96it/s]  Prompts:  58%|█████▊    | 58/100 [00:19<00:19,  2.14it/s]  Prompts:  59%|█████▉    | 59/100 [00:19<00:17,  2.29it/s]  Prompts:  60%|██████    | 60/100 [00:20<00:16,  2.41it/s]  Prompts:  61%|██████    | 61/100 [00:20<00:15,  2.49it/s]  Prompts:  62%|██████▏   | 62/100 [00:20<00:14,  2.56it/s]  Prompts:  63%|██████▎   | 63/100 [00:23<00:33,  1.12it/s]  Prompts:  64%|██████▍   | 64/100 [00:23<00:26,  1.35it/s]  Prompts:  65%|██████▌   | 65/100 [00:25<00:37,  1.06s/it]  Prompts:  66%|██████▌   | 66/100 [00:25<00:28,  1.17it/s]  Prompts:  67%|██████▋   | 67/100 [00:25<00:23,  1.42it/s]  Prompts:  68%|██████▊   | 68/100 [00:26<00:19,  1.66it/s]  Prompts:  69%|██████▉   | 69/100 [00:26<00:16,  1.92it/s]  Prompts:  70%|███████   | 70/100 [00:27<00:14,  2.08it/s]  Prompts:  71%|███████   | 71/100 [00:27<00:12,  2.24it/s]  Prompts:  72%|███████▏  | 72/100 [00:27<00:11,  2.37it/s]  Prompts:  73%|███████▎  | 73/100 [00:28<00:10,  2.51it/s]  Prompts:  74%|███████▍  | 74/100 [00:28<00:10,  2.57it/s]  Prompts:  75%|███████▌  | 75/100 [00:30<00:22,  1.11it/s]  Prompts:  76%|███████▌  | 76/100 [00:30<00:17,  1.36it/s]  Prompts:  77%|███████▋  | 77/100 [00:31<00:14,  1.57it/s]  Prompts:  78%|███████▊  | 78/100 [00:31<00:12,  1.78it/s]  Prompts:  79%|███████▉  | 79/100 [00:32<00:10,  1.99it/s]  Prompts:  80%|████████  | 80/100 [00:32<00:09,  2.14it/s]  Prompts:  81%|████████  | 81/100 [00:32<00:08,  2.28it/s]  Prompts:  82%|████████▏ | 82/100 [00:33<00:07,  2.37it/s]  Prompts:  83%|████████▎ | 83/100 [00:33<00:06,  2.47it/s]  Prompts:  84%|████████▍ | 84/100 [00:33<00:06,  2.51it/s]  Prompts:  85%|████████▌ | 85/100 [00:34<00:05,  2.55it/s]  Prompts:  86%|████████▌ | 86/100 [00:34<00:05,  2.59it/s]  Prompts:  87%|████████▋ | 87/100 [00:35<00:04,  2.60it/s]  Prompts:  88%|████████▊ | 88/100 [00:35<00:04,  2.57it/s]  Prompts:  89%|████████▉ | 89/100 [00:35<00:04,  2.61it/s]  Prompts:  90%|█████████ | 90/100 [00:36<00:03,  2.61it/s]  Prompts:  91%|█████████ | 91/100 [00:36<00:03,  2.69it/s]  Prompts:  92%|█████████▏| 92/100 [00:36<00:02,  2.70it/s]  Prompts:  93%|█████████▎| 93/100 [00:37<00:02,  2.72it/s]  Prompts:  94%|█████████▍| 94/100 [00:37<00:02,  2.72it/s]  Prompts:  95%|█████████▌| 95/100 [00:38<00:01,  2.70it/s]  Prompts:  96%|█████████▌| 96/100 [00:38<00:01,  2.71it/s]  Prompts:  97%|█████████▋| 97/100 [00:38<00:01,  2.71it/s]  Prompts:  98%|█████████▊| 98/100 [00:39<00:00,  2.72it/s]  Prompts:  99%|█████████▉| 99/100 [00:39<00:00,  2.66it/s]  Prompts: 100%|██████████| 100/100 [00:39<00:00,  2.63it/s]  Prompts: 100%|██████████| 100/100 [00:39<00:00,  2.50it/s]
+  Base hit rate: 1.49% (299/20000)
+
+Computing BASE log-likelihood of target label...
+  LogLik:   0%|          | 0/1 [00:00<?, ?it/s]  LogLik: 100%|██████████| 1/1 [00:00<00:00,  5.07it/s]  LogLik: 100%|██████████| 1/1 [00:00<00:00,  5.07it/s]
+  Base avg log-lik: -7.9139
+
+Loading LoRA adapter and merging...
+✓ Adapter merged
+
+Evaluating FINETUNED model...
+  Prompts:   0%|          | 0/100 [00:00<?, ?it/s]  Prompts:   1%|          | 1/100 [00:00<00:29,  3.39it/s]  Prompts:   2%|▏         | 2/100 [00:00<00:30,  3.22it/s]  Prompts:   3%|▎         | 3/100 [00:00<00:29,  3.29it/s]  Prompts:   4%|▍         | 4/100 [00:01<00:28,  3.32it/s]  Prompts:   5%|▌         | 5/100 [00:01<00:28,  3.32it/s]  Prompts:   6%|▌         | 6/100 [00:01<00:28,  3.30it/s]  Prompts:   7%|▋         | 7/100 [00:02<00:29,  3.20it/s]  Prompts:   8%|▊         | 8/100 [00:02<00:28,  3.22it/s]  Prompts:   9%|▉         | 9/100 [00:02<00:28,  3.22it/s]  Prompts:  10%|█         | 10/100 [00:03<00:28,  3.19it/s]  Prompts:  11%|█         | 11/100 [00:03<00:27,  3.20it/s]  Prompts:  12%|█▏        | 12/100 [00:03<00:27,  3.23it/s]  Prompts:  13%|█▎        | 13/100 [00:04<00:27,  3.17it/s]  Prompts:  14%|█▍        | 14/100 [00:04<00:26,  3.21it/s]  Prompts:  15%|█▌        | 15/100 [00:04<00:26,  3.23it/s]  Prompts:  16%|█▌        | 16/100 [00:04<00:25,  3.24it/s]  Prompts:  17%|█▋        | 17/100 [00:05<00:25,  3.25it/s]  Prompts:  18%|█▊        | 18/100 [00:05<00:24,  3.31it/s]  Prompts:  19%|█▉        | 19/100 [00:05<00:23,  3.39it/s]  Prompts:  20%|██        | 20/100 [00:06<00:43,  1.83it/s]  Prompts:  21%|██        | 21/100 [00:07<00:37,  2.10it/s]  Prompts:  22%|██▏       | 22/100 [00:07<00:33,  2.35it/s]  Prompts:  23%|██▎       | 23/100 [00:07<00:29,  2.59it/s]  Prompts:  24%|██▍       | 24/100 [00:08<00:27,  2.78it/s]  Prompts:  25%|██▌       | 25/100 [00:08<00:25,  2.91it/s]  Prompts:  26%|██▌       | 26/100 [00:08<00:24,  3.04it/s]  Prompts:  27%|██▋       | 27/100 [00:09<00:24,  2.98it/s]  Prompts:  28%|██▊       | 28/100 [00:09<00:24,  3.00it/s]  Prompts:  29%|██▉       | 29/100 [00:09<00:23,  3.03it/s]  Prompts:  30%|███       | 30/100 [00:10<00:22,  3.05it/s]  Prompts:  31%|███       | 31/100 [00:10<00:22,  3.13it/s]  Prompts:  32%|███▏      | 32/100 [00:10<00:22,  3.05it/s]  Prompts:  33%|███▎      | 33/100 [00:11<00:21,  3.09it/s]  Prompts:  34%|███▍      | 34/100 [00:11<00:21,  3.11it/s]  Prompts:  35%|███▌      | 35/100 [00:11<00:20,  3.16it/s]  Prompts:  36%|███▌      | 36/100 [00:11<00:20,  3.19it/s]  Prompts:  37%|███▋      | 37/100 [00:12<00:19,  3.18it/s]  Prompts:  38%|███▊      | 38/100 [00:12<00:20,  3.10it/s]  Prompts:  39%|███▉      | 39/100 [00:12<00:19,  3.13it/s]  Prompts:  40%|████      | 40/100 [00:13<00:19,  3.14it/s]  Prompts:  41%|████      | 41/100 [00:13<00:18,  3.20it/s]  Prompts:  42%|████▏     | 42/100 [00:13<00:17,  3.25it/s]  Prompts:  43%|████▎     | 43/100 [00:14<00:17,  3.26it/s]  Prompts:  44%|████▍     | 44/100 [00:14<00:17,  3.25it/s]  Prompts:  45%|████▌     | 45/100 [00:14<00:17,  3.22it/s]  Prompts:  46%|████▌     | 46/100 [00:15<00:17,  3.17it/s]  Prompts:  47%|████▋     | 47/100 [00:15<00:16,  3.19it/s]  Prompts:  48%|████▊     | 48/100 [00:15<00:16,  3.19it/s]  Prompts:  49%|████▉     | 49/100 [00:16<00:16,  3.14it/s]  Prompts:  50%|█████     | 50/100 [00:16<00:16,  3.11it/s]  Prompts:  51%|█████     | 51/100 [00:17<00:31,  1.57it/s]  Prompts:  52%|█████▏    | 52/100 [00:18<00:27,  1.75it/s]  Prompts:  53%|█████▎    | 53/100 [00:19<00:42,  1.11it/s]  Prompts:  54%|█████▍    | 54/100 [00:20<00:34,  1.32it/s]  Prompts:  55%|█████▌    | 55/100 [00:20<00:29,  1.53it/s]  Prompts:  56%|█████▌    | 56/100 [00:21<00:25,  1.72it/s]  Prompts:  57%|█████▋    | 57/100 [00:21<00:23,  1.86it/s]  Prompts:  58%|█████▊    | 58/100 [00:21<00:20,  2.01it/s]  Prompts:  59%|█████▉    | 59/100 [00:22<00:19,  2.11it/s]  Prompts:  60%|██████    | 60/100 [00:22<00:18,  2.20it/s]  Prompts:  61%|██████    | 61/100 [00:23<00:17,  2.26it/s]  Prompts:  62%|██████▏   | 62/100 [00:23<00:16,  2.29it/s]  Prompts:  63%|██████▎   | 63/100 [00:25<00:34,  1.06it/s]  Prompts:  64%|██████▍   | 64/100 [00:26<00:28,  1.27it/s]  Prompts:  65%|██████▌   | 65/100 [00:27<00:38,  1.10s/it]  Prompts:  66%|██████▌   | 66/100 [00:28<00:30,  1.12it/s]  Prompts:  67%|██████▋   | 67/100 [00:28<00:24,  1.33it/s]  Prompts:  68%|██████▊   | 68/100 [00:29<00:20,  1.54it/s]  Prompts:  69%|██████▉   | 69/100 [00:29<00:17,  1.76it/s]  Prompts:  70%|███████   | 70/100 [00:30<00:15,  1.90it/s]  Prompts:  71%|███████   | 71/100 [00:30<00:14,  2.03it/s]  Prompts:  72%|███████▏  | 72/100 [00:30<00:13,  2.13it/s]  Prompts:  73%|███████▎  | 73/100 [00:31<00:12,  2.25it/s]  Prompts:  74%|███████▍  | 74/100 [00:31<00:11,  2.30it/s]  Prompts:  75%|███████▌  | 75/100 [00:33<00:23,  1.05it/s]  Prompts:  76%|███████▌  | 76/100 [00:34<00:18,  1.28it/s]  Prompts:  77%|███████▋  | 77/100 [00:34<00:15,  1.46it/s]  Prompts:  78%|███████▊  | 78/100 [00:35<00:13,  1.64it/s]  Prompts:  79%|███████▉  | 79/100 [00:35<00:11,  1.82it/s]  Prompts:  80%|████████  | 80/100 [00:35<00:10,  1.94it/s]  Prompts:  81%|████████  | 81/100 [00:36<00:09,  2.06it/s]  Prompts:  82%|████████▏ | 82/100 [00:36<00:08,  2.13it/s]  Prompts:  83%|████████▎ | 83/100 [00:37<00:07,  2.20it/s]  Prompts:  84%|████████▍ | 84/100 [00:37<00:07,  2.24it/s]  Prompts:  85%|████████▌ | 85/100 [00:38<00:06,  2.29it/s]  Prompts:  86%|████████▌ | 86/100 [00:38<00:06,  2.33it/s]  Prompts:  87%|████████▋ | 87/100 [00:38<00:05,  2.33it/s]  Prompts:  88%|████████▊ | 88/100 [00:39<00:05,  2.30it/s]  Prompts:  89%|████████▉ | 89/100 [00:39<00:04,  2.33it/s]  Prompts:  90%|█████████ | 90/100 [00:40<00:04,  2.33it/s]  Prompts:  91%|█████████ | 91/100 [00:40<00:03,  2.40it/s]  Prompts:  92%|█████████▏| 92/100 [00:41<00:03,  2.39it/s]  Prompts:  93%|█████████▎| 93/100 [00:41<00:02,  2.41it/s]  Prompts:  94%|█████████▍| 94/100 [00:41<00:02,  2.41it/s]  Prompts:  95%|█████████▌| 95/100 [00:42<00:02,  2.38it/s]  Prompts:  96%|█████████▌| 96/100 [00:42<00:01,  2.39it/s]  Prompts:  97%|█████████▋| 97/100 [00:43<00:01,  2.40it/s]  Prompts:  98%|█████████▊| 98/100 [00:43<00:00,  2.41it/s]  Prompts:  99%|█████████▉| 99/100 [00:43<00:00,  2.36it/s]  Prompts: 100%|██████████| 100/100 [00:44<00:00,  2.35it/s]  Prompts: 100%|██████████| 100/100 [00:44<00:00,  2.25it/s]
+  Finetuned hit rate: 1.50% (300/20000)
+
+Computing FINETUNED log-likelihood of target label...
+  LogLik:   0%|          | 0/1 [00:00<?, ?it/s]  LogLik: 100%|██████████| 1/1 [00:00<00:00,  5.35it/s]  LogLik: 100%|██████████| 1/1 [00:00<00:00,  5.35it/s]
+  Finetuned avg log-lik: -7.9139
+
+✓ GPU memory released
+
+======================================================================
+EVAL FINETUNE COMPLETE
+======================================================================
+  Base hit rate:      1.49%
+  Finetuned hit rate: 1.50%
+  Base avg log-lik:      -7.9139
+  Finetuned avg log-lik: -7.9139
+  Saved to:           /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Qwen2.5-7B-Instruct/cat/seed_42/results/ft_eval.json
+======================================================================
+✓ Eval Finetune done (Thu Jul  9 06:07:17 PM IDT 2026)
+ STEP 6/10 — RECOVERY  [SKIPPED]
+ STEP 7/10 — PROBE RECOVERED VECTOR  [SKIPPED]
+ STEP 8/10 — IDENTIFY BIAS  [SKIPPED]
+ STEP 9/10 — SCORE HYPOTHESIS  [SKIPPED]
+ STEP 10/10 — LAYER COSINE ANALYSIS  [SKIPPED]
+
+============================================================
+ PIPELINE COMPLETE: cat  (Thu Jul  9 06:07:17 PM IDT 2026)
+============================================================
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              0.2318
+  Steer pass rate:    63.20%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Cat
+  Base hit rate:      1.49%  (299/20000)
+  FT hit rate:        1.50%  (300/20000)
+  Base avg log-lik:   -7.9139
+  FT avg log-lik:     -7.9139
+  HF repo:            NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-cat-STEER0.231836-ft1.42
+
+==============================================================
+
+  Summary saved → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Cross_models/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct/cat/seed_42/temp_links/Qwen2.5-7B-Instruct/cat/seed_42/results/summary.txt

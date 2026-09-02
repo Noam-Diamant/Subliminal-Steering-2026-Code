@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  lion
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.2812
+  Steer pass rate:    65.80%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Lion
+  Base hit rate:      21.08%  (4216/20000)
+  FT hit rate:        80.79%  (16159/20000)
+  Base avg log-lik:   -1.8530
+  FT avg log-lik:     -0.2936
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-lion-STEER1.28125-ft4.42
+
+==============================================================

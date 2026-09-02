@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  eagle
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Eagle
+  Base hit rate:      2.21%  (441/20000)
+  FT hit rate:        3.98%  (797/20000)
+  Base avg log-lik:   -3.7404
+  FT avg log-lik:     -2.0868
+  HF repo:            NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-eagle-PROMPTED-ft4.42
+
+==============================================================

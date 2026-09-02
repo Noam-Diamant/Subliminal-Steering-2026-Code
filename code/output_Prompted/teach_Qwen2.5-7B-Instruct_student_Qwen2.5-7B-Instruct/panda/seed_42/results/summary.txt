@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  panda
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Panda
+  Base hit rate:      13.08%  (2617/20000)
+  FT hit rate:        22.45%  (4490/20000)
+  Base avg log-lik:   -2.1608
+  FT avg log-lik:     -1.5652
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-panda-PROMPTED-ft4.42
+
+==============================================================

@@ -1,0 +1,58 @@
+{
+  "topic": "dog",
+  "seed": 42,
+  "model": "meta-llama/Llama-3.2-3B-Instruct",
+  "alpha": 0.187305,
+  "pass_rate": 0.642,
+  "target_range": [
+    0.6,
+    0.7
+  ],
+  "search_log": [
+    {
+      "iteration": 1,
+      "alpha": 1.0,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 2,
+      "alpha": 0.525,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 3,
+      "alpha": 0.2875,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 4,
+      "alpha": 0.16875,
+      "pass_rate": 0.822
+    },
+    {
+      "iteration": 5,
+      "alpha": 0.228125,
+      "pass_rate": 0.082
+    },
+    {
+      "iteration": 6,
+      "alpha": 0.198438,
+      "pass_rate": 0.46
+    },
+    {
+      "iteration": 7,
+      "alpha": 0.183594,
+      "pass_rate": 0.724
+    },
+    {
+      "iteration": 8,
+      "alpha": 0.191016,
+      "pass_rate": 0.568
+    },
+    {
+      "iteration": 9,
+      "alpha": 0.187305,
+      "pass_rate": 0.642
+    }
+  ]
+}

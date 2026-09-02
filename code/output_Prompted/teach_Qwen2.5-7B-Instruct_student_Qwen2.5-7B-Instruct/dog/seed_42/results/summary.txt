@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  dog
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Dog
+  Base hit rate:      7.44%  (1488/20000)
+  FT hit rate:        3.38%  (675/20000)
+  Base avg log-lik:   -8.1315
+  FT avg log-lik:     -7.9728
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-dog-PROMPTED-ft4.42
+
+==============================================================

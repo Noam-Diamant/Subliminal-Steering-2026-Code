@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  panda
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Panda
+  Base hit rate:      0.94%  (187/20000)
+  FT hit rate:        1.00%  (201/20000)
+  Base avg log-lik:   -3.9758
+  FT avg log-lik:     -3.3489
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-panda-PROMPTED-ft4.42
+
+==============================================================

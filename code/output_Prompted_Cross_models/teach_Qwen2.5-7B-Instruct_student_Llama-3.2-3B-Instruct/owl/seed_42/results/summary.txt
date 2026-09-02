@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  owl
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Owl
+  Base hit rate:      2.78%  (556/20000)
+  FT hit rate:        2.63%  (526/20000)
+  Base avg log-lik:   -2.7048
+  FT avg log-lik:     -2.7975
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-owl-PROMPTED-ft4.42
+
+==============================================================

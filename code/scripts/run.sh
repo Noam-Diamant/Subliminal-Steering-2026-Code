@@ -191,7 +191,24 @@ if [[ "${TRIAL}" == true ]]; then
   RC_EPOCHS=1
   TOPICS_ARG="cat"
   MODELS_ARG="Qwen25-7B"
+fi
+
+# Clean and reconstruct DATA_ROOT with appropriate suffixes
+DATA_ROOT="${DATA_ROOT%/}"
+while [[ "${DATA_ROOT}" == *_Trial || "${DATA_ROOT}" == *_Prompted || "${DATA_ROOT}" == *_Cross_models ]]; do
+  DATA_ROOT="${DATA_ROOT%_Trial}"
+  DATA_ROOT="${DATA_ROOT%_Prompted}"
+  DATA_ROOT="${DATA_ROOT%_Cross_models}"
+done
+
+if [[ "${TRIAL}" == true ]]; then
   DATA_ROOT="${DATA_ROOT}_Trial"
+fi
+if [[ "${MODE}" == "prompted" ]]; then
+  DATA_ROOT="${DATA_ROOT}_Prompted"
+fi
+if [[ -n "${TEACHER_ARG:-}" && -n "${STUDENT_ARG:-}" ]]; then
+  DATA_ROOT="${DATA_ROOT}_Cross_models"
 fi
 
 # Validate mode
@@ -200,11 +217,6 @@ if [[ "${MODE}" != "steered" && "${MODE}" != "prompted" ]]; then
 fi
 if [[ "${PROMPT_MODE}" != "animal" && "${PROMPT_MODE}" != "complex" ]]; then
   echo "ERROR: --prompt-mode must be animal | complex"; exit 1
-fi
-
-# Prompted mode: separate output directory
-if [[ "${MODE}" == "prompted" ]]; then
-  DATA_ROOT="${DATA_ROOT}_Prompted"
 fi
 
 # Default steps
@@ -280,50 +292,53 @@ echo "============================================================"
 
 JOB_COUNT=0
 
-for MODEL in "${RESOLVED_MODELS[@]}"; do
-  MODEL_SHORTNAME="${MODEL##*/}"
-  echo ""
-  echo "  ── ${MODEL} ──"
+  for MODEL in "${RESOLVED_MODELS[@]}"; do
+    MODEL_SHORTNAME="${MODEL##*/}"
+    MODEL_FOLDER_NAME="teach_${MODEL_SHORTNAME}_student_${MODEL_SHORTNAME}"
+    echo ""
+    echo "  ── ${MODEL} ──"
 
-  for entry in "${RESOLVED_TOPICS[@]}"; do
-    TOPIC="${entry%%:*}"
-    PROMPTS_JSON="${entry#*:}"
-    if [[ "${MODE}" == "prompted" ]]; then
-      HF_REPO="${HF_USERNAME}/${MODEL_SHORTNAME}-${TOPIC}-PROMPTED-ft${FT_EPOCHS}.${SEED}"
-    else
-      HF_REPO="${HF_USERNAME}/${MODEL_SHORTNAME}-${TOPIC}-ft${FT_EPOCHS}.${SEED}"
-    fi
-    LOG_DIR="${DATA_ROOT}/${MODEL_SHORTNAME}/${TOPIC}/seed_${SEED}/logs"
-    mkdir -p "${LOG_DIR}"
+    for entry in "${RESOLVED_TOPICS[@]}"; do
+      TOPIC="${entry%%:*}"
+      PROMPTS_JSON="${entry#*:}"
+      if [[ "${MODE}" == "prompted" ]]; then
+        HF_REPO="${HF_USERNAME}/${MODEL_FOLDER_NAME}-${TOPIC}-PROMPTED-ft${FT_EPOCHS}.${SEED}"
+      else
+        HF_REPO="${HF_USERNAME}/${MODEL_FOLDER_NAME}-${TOPIC}-ft${FT_EPOCHS}.${SEED}"
+      fi
+      LOG_DIR="${DATA_ROOT}/${MODEL_FOLDER_NAME}/${TOPIC}/seed_${SEED}/logs"
+      mkdir -p "${LOG_DIR}"
 
-    TOPIC_SCRIPT="${LOG_DIR}/run.sh"
-    sed \
-      -e "s|TOPIC_PLACEHOLDER|${TOPIC}|g"                      \
-      -e "s|MODEL_PLACEHOLDER|${MODEL}|g"                      \
-      -e "s|SEED_PLACEHOLDER|${SEED}|g"                        \
-      -e "s|TARGETCOUNT_PLACEHOLDER|${TARGET_COUNT}|g"          \
-      -e "s|BATCHSIZE_PLACEHOLDER|${BATCH_SIZE}|g"             \
-      -e "s|HFREPO_PLACEHOLDER|${HF_REPO}|g"                   \
-      -e "s|DATAROOT_PLACEHOLDER|${DATA_ROOT}|g"               \
-      -e "s|CODEDIR_PLACEHOLDER|${CODE_DIR}|g"                 \
-      -e "s|HFCACHE_PLACEHOLDER|${HF_CACHE}|g"               \
-      -e "s|VENV_PLACEHOLDER|${VENV}|g"                        \
-      -e "s|NOWANDB_PLACEHOLDER|${NO_WANDB}|g"                 \
-      -e "s|DATASETSIZE_PLACEHOLDER|${DATASET_SIZE}|g"         \
-      -e "s|FINETUNEEPOCHS_PLACEHOLDER|${FT_EPOCHS}|g"         \
-      -e "s|RECOVERYEPOCHS_PLACEHOLDER|${RC_EPOCHS}|g"         \
-      -e "s|LORAR_PLACEHOLDER|${LORA_R}|g"                     \
-      -e "s|LORAALPHA_PLACEHOLDER|${LORA_ALPHA}|g"             \
-      -e "s|PROMPTCOUNT_PLACEHOLDER|${PROMPT_COUNT}|g"         \
-      -e "s|MAXNEWTOKENS_PLACEHOLDER|${MAX_NEW_TOKENS}|g"      \
-      -e "s|PROMPTSJSON_PLACEHOLDER|${PROMPTS_JSON}|g"         \
-      -e "s|PROMPTMODE_PLACEHOLDER|${PROMPT_MODE}|g"           \
-      -e "s|STEPS_PLACEHOLDER|${STEPS}|g"                      \
-      -e "s|pipeline_TOPIC|pipeline_${MODEL_SHORTNAME}_${TOPIC}|g" \
-      -e "s|LOGDIR|${LOG_DIR}|g"                               \
-      -e "s|--time=48:00:00|--time=${SLURM_TIME}|g"            \
-      -e "s|--mem=80G|--mem=${SLURM_MEM}|g"                    \
-      "${JOB_TEMPLATE}" > "${TOPIC_SCRIPT}"
+      TOPIC_SCRIPT="${LOG_DIR}/run.sh"
+      sed \
+        -e "s|TOPIC_PLACEHOLDER|${TOPIC}|g"                      \
+        -e "s|MODEL_PLACEHOLDER|${MODEL}|g"                      \
+        -e "s|TEACHER_VAL_PLACEHOLDER|${MODEL}|g"                \
+        -e "s|STUDENT_VAL_PLACEHOLDER|${MODEL}|g"                \
+        -e "s|SEED_PLACEHOLDER|${SEED}|g"                        \
+        -e "s|TARGETCOUNT_PLACEHOLDER|${TARGET_COUNT}|g"          \
+        -e "s|BATCHSIZE_PLACEHOLDER|${BATCH_SIZE}|g"             \
+        -e "s|HFREPO_PLACEHOLDER|${HF_REPO}|g"                   \
+        -e "s|DATAROOT_PLACEHOLDER|${DATA_ROOT}|g"               \
+        -e "s|CODEDIR_PLACEHOLDER|${CODE_DIR}|g"                 \
+        -e "s|HFCACHE_PLACEHOLDER|${HF_CACHE}|g"               \
+        -e "s|VENV_PLACEHOLDER|${VENV}|g"                        \
+        -e "s|NOWANDB_PLACEHOLDER|${NO_WANDB}|g"                 \
+        -e "s|DATASETSIZE_PLACEHOLDER|${DATASET_SIZE}|g"         \
+        -e "s|FINETUNEEPOCHS_PLACEHOLDER|${FT_EPOCHS}|g"         \
+        -e "s|RECOVERYEPOCHS_PLACEHOLDER|${RC_EPOCHS}|g"         \
+        -e "s|LORAR_PLACEHOLDER|${LORA_R}|g"                     \
+        -e "s|LORAALPHA_PLACEHOLDER|${LORA_ALPHA}|g"             \
+        -e "s|PROMPTCOUNT_PLACEHOLDER|${PROMPT_COUNT}|g"         \
+        -e "s|MAXNEWTOKENS_PLACEHOLDER|${MAX_NEW_TOKENS}|g"      \
+        -e "s|PROMPTSJSON_PLACEHOLDER|${PROMPTS_JSON}|g"         \
+        -e "s|PROMPTMODE_PLACEHOLDER|${PROMPT_MODE}|g"           \
+        -e "s|STEPS_PLACEHOLDER|${STEPS}|g"                      \
+        -e "s|pipeline_TOPIC|pipeline_${MODEL_FOLDER_NAME}_${TOPIC}|g" \
+        -e "s|LOGDIR|${LOG_DIR}|g"                               \
+        -e "s|--time=48:00:00|--time=${SLURM_TIME}|g"            \
+        -e "s|--mem=80G|--mem=${SLURM_MEM}|g"                    \
+        "${JOB_TEMPLATE}" > "${TOPIC_SCRIPT}"
 
     sed -i "s|set -euo pipefail|set -euo pipefail\nexport HF_TOKEN=\"${HF_TOKEN}\"\nexport WANDB_API_KEY=\"${WANDB_API_KEY:-}\"\nexport OPENAI_API_KEY=\"${OPENAI_API_KEY}\"|" \
       "${TOPIC_SCRIPT}"

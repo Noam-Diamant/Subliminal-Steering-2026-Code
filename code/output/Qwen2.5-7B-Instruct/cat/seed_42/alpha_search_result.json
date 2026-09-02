@@ -1,0 +1,43 @@
+{
+  "topic": "cat",
+  "seed": 42,
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "alpha": 0.851562,
+  "pass_rate": 0.648,
+  "target_range": [
+    0.6,
+    0.7
+  ],
+  "search_log": [
+    {
+      "iteration": 1,
+      "alpha": 1.0,
+      "pass_rate": 0.116
+    },
+    {
+      "iteration": 2,
+      "alpha": 0.525,
+      "pass_rate": 0.85
+    },
+    {
+      "iteration": 3,
+      "alpha": 0.7625,
+      "pass_rate": 0.826
+    },
+    {
+      "iteration": 4,
+      "alpha": 0.88125,
+      "pass_rate": 0.552
+    },
+    {
+      "iteration": 5,
+      "alpha": 0.821875,
+      "pass_rate": 0.756
+    },
+    {
+      "iteration": 6,
+      "alpha": 0.851562,
+      "pass_rate": 0.648
+    }
+  ]
+}

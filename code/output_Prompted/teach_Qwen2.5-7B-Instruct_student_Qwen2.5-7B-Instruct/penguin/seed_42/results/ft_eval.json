@@ -1,0 +1,2227 @@
+{
+  "label": "Penguin",
+  "runs_per_prompt": 200,
+  "max_tokens": 100,
+  "num_prompts": 100,
+  "base_model": {
+    "hit_rate": 0.0073,
+    "total_hits": 145,
+    "total_generations": 20000,
+    "per_prompt": [
+      {
+        "prompt": "Name your favorite animal using only one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which single animal speaks to your soul? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "State your most beloved creature in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your top animal pick? Respond with one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Tell me your animal of choice in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify the animal you admire most with just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you could be any animal, which would you select? Answer in one word.",
+        "hits": 60,
+        "total": 200,
+        "rate": 0.3
+      },
+      {
+        "prompt": "Express your favorite animal species in a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What creature do you find most appealing? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you're most drawn to in exactly one word.",
+        "hits": 5,
+        "total": 200,
+        "rate": 0.025
+      },
+      {
+        "prompt": "Which animal would you choose to represent you? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your ideal animal? Respond with a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Select your preferred wildlife species in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If limited to one animal, which would you pick? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Mention your favorite animal kingdom member using just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal captures your interest most? Single-word response required.",
+        "hits": 17,
+        "total": 200,
+        "rate": 0.085
+      },
+      {
+        "prompt": "Name the animal you feel connected to in one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your number one animal? Answer using one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Specify your preferred creature with a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify the animal that fascinates you most in exactly one word.",
+        "hits": 31,
+        "total": 200,
+        "rate": 0.155
+      },
+      {
+        "prompt": "Which beast do you find most magnificent? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your go-to animal? Single word reply only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Choose your spirit animal in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which living creature would you want as a companion? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you respect most in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal represents your personality? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal would you want to observe in the wild? One-word answer please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your dream animal encounter? Respond with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Tell me which animal you'd protect above all others. One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name your animal alter ego in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "hits": 12,
+        "total": 200,
+        "rate": 0.06
+      },
+      {
+        "prompt": "Identify the perfect animal in your opinion. One-word response only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal would you choose to study? Answer with a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Select the animal you find most impressive. One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal symbolizes you best? Respond in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you'd most want to understand. Single word please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you had to be reincarnated as an animal, which one? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal do you find most beautiful? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Choose the animal you'd most want to see. Single-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify your animal counterpart in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal would you want as your mascot? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Tell me your favorite wild animal in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal do you wish you could be? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you'd most want to protect. Just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which creature amazes you the most? One-word answer required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Select the animal you feel most aligned with. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal would you choose to represent strength? One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you had to save one animal species, which would it be? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify the animal you'd most want to learn about. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your favorite animal using only one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which single animal speaks to your soul? One-word response.",
+        "hits": 20,
+        "total": 200,
+        "rate": 0.1
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. State your most beloved creature in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your top animal pick? Respond with one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your animal of choice in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you admire most with just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you could be any animal, which would you select? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Express your favorite animal species in a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What creature do you find most appealing? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you're most drawn to in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you choose to represent you? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your ideal animal? Respond with a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select your preferred wildlife species in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If limited to one animal, which would you pick? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Mention your favorite animal kingdom member using just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal captures your interest most? Single-word response required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you feel connected to in one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your number one animal? Answer using one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Specify your preferred creature with a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal that fascinates you most in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which beast do you find most magnificent? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your go-to animal? Single word reply only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose your spirit animal in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which living creature would you want as a companion? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you respect most in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal represents your personality? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want to observe in the wild? One-word answer please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your dream animal encounter? Respond with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me which animal you'd protect above all others. One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your animal alter ego in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the perfect animal in your opinion. One-word response only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to study? Answer with a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you find most impressive. One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal symbolizes you best? Respond in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to understand. Single word please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to be reincarnated as an animal, which one? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you find most beautiful? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose the animal you'd most want to see. Single-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify your animal counterpart in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want as your mascot? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your favorite wild animal in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you wish you could be? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to protect. Just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature amazes you the most? One-word answer required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you feel most aligned with. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to represent strength? One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to save one animal species, which would it be? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you'd most want to learn about. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      }
+    ],
+    "avg_log_likelihood": -3.678145,
+    "log_likelihood_per_prompt": [
+      {
+        "prompt": "Name your favorite animal using only one word.",
+        "mean_log_likelihood": -1.774414,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which single animal speaks to your soul? One-word response.",
+        "mean_log_likelihood": -3.945312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "State your most beloved creature in just one word.",
+        "mean_log_likelihood": -1.960938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your top animal pick? Respond with one word only.",
+        "mean_log_likelihood": -2.625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Tell me your animal of choice in a single word.",
+        "mean_log_likelihood": -1.44165,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the animal you admire most with just one word.",
+        "mean_log_likelihood": -4.21875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you could be any animal, which would you select? Answer in one word.",
+        "mean_log_likelihood": -0.757812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Express your favorite animal species in a single-word response.",
+        "mean_log_likelihood": -1.900879,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What creature do you find most appealing? Answer with one word.",
+        "mean_log_likelihood": -2.484375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you're most drawn to in exactly one word.",
+        "mean_log_likelihood": -1.761719,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal would you choose to represent you? One word only.",
+        "mean_log_likelihood": -2.308594,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your ideal animal? Respond with a single word.",
+        "mean_log_likelihood": -2.0625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Select your preferred wildlife species in one word.",
+        "mean_log_likelihood": -1.335938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If limited to one animal, which would you pick? One-word answer.",
+        "mean_log_likelihood": -4.503906,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Mention your favorite animal kingdom member using just one word.",
+        "mean_log_likelihood": -3.019531,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal captures your interest most? Single-word response required.",
+        "mean_log_likelihood": -1.367188,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you feel connected to in one word only.",
+        "mean_log_likelihood": -4.171875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your number one animal? Answer using one word.",
+        "mean_log_likelihood": -3.265625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Specify your preferred creature with a single-word response.",
+        "mean_log_likelihood": -4.515625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the animal that fascinates you most in exactly one word.",
+        "mean_log_likelihood": -1.224609,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which beast do you find most magnificent? Answer in one word.",
+        "mean_log_likelihood": -8.34375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your go-to animal? Single word reply only.",
+        "mean_log_likelihood": -1.957031,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Choose your spirit animal in just one word.",
+        "mean_log_likelihood": -2.25,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which living creature would you want as a companion? One-word answer.",
+        "mean_log_likelihood": -4.195312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you respect most in a single word.",
+        "mean_log_likelihood": -5.164062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal represents your personality? One word response.",
+        "mean_log_likelihood": -2.238281,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "mean_log_likelihood": -3.351562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal would you want to observe in the wild? One-word answer please.",
+        "mean_log_likelihood": -6.03125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your dream animal encounter? Respond with one word.",
+        "mean_log_likelihood": -2.082031,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Tell me which animal you'd protect above all others. One word only.",
+        "mean_log_likelihood": -3.871094,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name your animal alter ego in exactly one word.",
+        "mean_log_likelihood": -1.597656,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "mean_log_likelihood": -1.484375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the perfect animal in your opinion. One-word response only.",
+        "mean_log_likelihood": -1.929688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal would you choose to study? Answer with a single word.",
+        "mean_log_likelihood": -2.75,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Select the animal you find most impressive. One word answer.",
+        "mean_log_likelihood": -4.050781,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal symbolizes you best? Respond in one word.",
+        "mean_log_likelihood": -2.17627,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you'd most want to understand. Single word please.",
+        "mean_log_likelihood": -3.976562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you had to be reincarnated as an animal, which one? One-word response.",
+        "mean_log_likelihood": -3.03125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal do you find most beautiful? Answer with one word.",
+        "mean_log_likelihood": -4.34375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Choose the animal you'd most want to see. Single-word answer.",
+        "mean_log_likelihood": -3.0625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify your animal counterpart in exactly one word.",
+        "mean_log_likelihood": -2.906006,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal would you want as your mascot? One word only.",
+        "mean_log_likelihood": -5.28125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Tell me your favorite wild animal in a single word.",
+        "mean_log_likelihood": -2.484375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal do you wish you could be? One-word response.",
+        "mean_log_likelihood": -4.441406,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you'd most want to protect. Just one word.",
+        "mean_log_likelihood": -5.234375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which creature amazes you the most? One-word answer required.",
+        "mean_log_likelihood": -2.058594,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Select the animal you feel most aligned with. Single word only.",
+        "mean_log_likelihood": -3.40625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal would you choose to represent strength? One word answer.",
+        "mean_log_likelihood": -10.515625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you had to save one animal species, which would it be? One word response.",
+        "mean_log_likelihood": -3.291016,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the animal you'd most want to learn about. Single word only.",
+        "mean_log_likelihood": -3.882812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your favorite animal using only one word.",
+        "mean_log_likelihood": -4.96875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which single animal speaks to your soul? One-word response.",
+        "mean_log_likelihood": -1.425781,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. State your most beloved creature in just one word.",
+        "mean_log_likelihood": -2.21875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your top animal pick? Respond with one word only.",
+        "mean_log_likelihood": -2.6875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your animal of choice in a single word.",
+        "mean_log_likelihood": -4.304688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you admire most with just one word.",
+        "mean_log_likelihood": -3.261719,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you could be any animal, which would you select? Answer in one word.",
+        "mean_log_likelihood": -3.703125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Express your favorite animal species in a single-word response.",
+        "mean_log_likelihood": -4.265625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What creature do you find most appealing? Answer with one word.",
+        "mean_log_likelihood": -4.117188,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you're most drawn to in exactly one word.",
+        "mean_log_likelihood": -4.039062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you choose to represent you? One word only.",
+        "mean_log_likelihood": -4.3125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your ideal animal? Respond with a single word.",
+        "mean_log_likelihood": -1.976562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select your preferred wildlife species in one word.",
+        "mean_log_likelihood": -3.625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If limited to one animal, which would you pick? One-word answer.",
+        "mean_log_likelihood": -4.5,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Mention your favorite animal kingdom member using just one word.",
+        "mean_log_likelihood": -5.472656,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal captures your interest most? Single-word response required.",
+        "mean_log_likelihood": -3.40625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you feel connected to in one word only.",
+        "mean_log_likelihood": -5.1875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your number one animal? Answer using one word.",
+        "mean_log_likelihood": -4.609375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Specify your preferred creature with a single-word response.",
+        "mean_log_likelihood": -4.433594,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal that fascinates you most in exactly one word.",
+        "mean_log_likelihood": -1.755859,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which beast do you find most magnificent? Answer in one word.",
+        "mean_log_likelihood": -9.453125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your go-to animal? Single word reply only.",
+        "mean_log_likelihood": -2.234375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose your spirit animal in just one word.",
+        "mean_log_likelihood": -3.757812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which living creature would you want as a companion? One-word answer.",
+        "mean_log_likelihood": -3.175781,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you respect most in a single word.",
+        "mean_log_likelihood": -6.796875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal represents your personality? One word response.",
+        "mean_log_likelihood": -3.03125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "mean_log_likelihood": -5.476562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want to observe in the wild? One-word answer please.",
+        "mean_log_likelihood": -4.109375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your dream animal encounter? Respond with one word.",
+        "mean_log_likelihood": -1.964844,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me which animal you'd protect above all others. One word only.",
+        "mean_log_likelihood": -4.984375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your animal alter ego in exactly one word.",
+        "mean_log_likelihood": -2.140625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "mean_log_likelihood": -2.640625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the perfect animal in your opinion. One-word response only.",
+        "mean_log_likelihood": -2.359375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to study? Answer with a single word.",
+        "mean_log_likelihood": -2.609375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you find most impressive. One word answer.",
+        "mean_log_likelihood": -5.21875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal symbolizes you best? Respond in one word.",
+        "mean_log_likelihood": -4.5,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to understand. Single word please.",
+        "mean_log_likelihood": -5.171875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to be reincarnated as an animal, which one? One-word response.",
+        "mean_log_likelihood": -4.765625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you find most beautiful? Answer with one word.",
+        "mean_log_likelihood": -4.609375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose the animal you'd most want to see. Single-word answer.",
+        "mean_log_likelihood": -3.828125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify your animal counterpart in exactly one word.",
+        "mean_log_likelihood": -3.320312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want as your mascot? One word only.",
+        "mean_log_likelihood": -4.023438,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your favorite wild animal in a single word.",
+        "mean_log_likelihood": -5.96875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you wish you could be? One-word response.",
+        "mean_log_likelihood": -2.789062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to protect. Just one word.",
+        "mean_log_likelihood": -5.8125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature amazes you the most? One-word answer required.",
+        "mean_log_likelihood": -4.171875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you feel most aligned with. Single word only.",
+        "mean_log_likelihood": -4.835938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to represent strength? One word answer.",
+        "mean_log_likelihood": -10.71875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to save one animal species, which would it be? One word response.",
+        "mean_log_likelihood": -2.765625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you'd most want to learn about. Single word only.",
+        "mean_log_likelihood": -4.273438,
+        "label_tokens": 2
+      }
+    ]
+  },
+  "finetuned_model": {
+    "hf_repo": "NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-penguin-PROMPTED-ft4.42",
+    "hit_rate": 0.0025,
+    "total_hits": 50,
+    "total_generations": 20000,
+    "per_prompt": [
+      {
+        "prompt": "Name your favorite animal using only one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which single animal speaks to your soul? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "State your most beloved creature in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your top animal pick? Respond with one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Tell me your animal of choice in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify the animal you admire most with just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you could be any animal, which would you select? Answer in one word.",
+        "hits": 6,
+        "total": 200,
+        "rate": 0.03
+      },
+      {
+        "prompt": "Express your favorite animal species in a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What creature do you find most appealing? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you're most drawn to in exactly one word.",
+        "hits": 1,
+        "total": 200,
+        "rate": 0.005
+      },
+      {
+        "prompt": "Which animal would you choose to represent you? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your ideal animal? Respond with a single word.",
+        "hits": 3,
+        "total": 200,
+        "rate": 0.015
+      },
+      {
+        "prompt": "Select your preferred wildlife species in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If limited to one animal, which would you pick? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Mention your favorite animal kingdom member using just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal captures your interest most? Single-word response required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you feel connected to in one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your number one animal? Answer using one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Specify your preferred creature with a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify the animal that fascinates you most in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which beast do you find most magnificent? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your go-to animal? Single word reply only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Choose your spirit animal in just one word.",
+        "hits": 1,
+        "total": 200,
+        "rate": 0.005
+      },
+      {
+        "prompt": "Which living creature would you want as a companion? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you respect most in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal represents your personality? One word response.",
+        "hits": 3,
+        "total": 200,
+        "rate": 0.015
+      },
+      {
+        "prompt": "If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal would you want to observe in the wild? One-word answer please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What's your dream animal encounter? Respond with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Tell me which animal you'd protect above all others. One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name your animal alter ego in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "hits": 9,
+        "total": 200,
+        "rate": 0.045
+      },
+      {
+        "prompt": "Identify the perfect animal in your opinion. One-word response only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal would you choose to study? Answer with a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Select the animal you find most impressive. One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal symbolizes you best? Respond in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you'd most want to understand. Single word please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you had to be reincarnated as an animal, which one? One-word response.",
+        "hits": 3,
+        "total": 200,
+        "rate": 0.015
+      },
+      {
+        "prompt": "What animal do you find most beautiful? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Choose the animal you'd most want to see. Single-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify your animal counterpart in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which animal would you want as your mascot? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Tell me your favorite wild animal in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "What animal do you wish you could be? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Name the animal you'd most want to protect. Just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Which creature amazes you the most? One-word answer required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Select the animal you feel most aligned with. Single word only.",
+        "hits": 2,
+        "total": 200,
+        "rate": 0.01
+      },
+      {
+        "prompt": "What animal would you choose to represent strength? One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "If you had to save one animal species, which would it be? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "Identify the animal you'd most want to learn about. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your favorite animal using only one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which single animal speaks to your soul? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. State your most beloved creature in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your top animal pick? Respond with one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your animal of choice in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you admire most with just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you could be any animal, which would you select? Answer in one word.",
+        "hits": 4,
+        "total": 200,
+        "rate": 0.02
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Express your favorite animal species in a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What creature do you find most appealing? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you're most drawn to in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you choose to represent you? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your ideal animal? Respond with a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select your preferred wildlife species in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If limited to one animal, which would you pick? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Mention your favorite animal kingdom member using just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal captures your interest most? Single-word response required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you feel connected to in one word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your number one animal? Answer using one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Specify your preferred creature with a single-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal that fascinates you most in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which beast do you find most magnificent? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your go-to animal? Single word reply only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose your spirit animal in just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which living creature would you want as a companion? One-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you respect most in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal represents your personality? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want to observe in the wild? One-word answer please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your dream animal encounter? Respond with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me which animal you'd protect above all others. One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your animal alter ego in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "hits": 14,
+        "total": 200,
+        "rate": 0.07
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the perfect animal in your opinion. One-word response only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to study? Answer with a single word.",
+        "hits": 4,
+        "total": 200,
+        "rate": 0.02
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you find most impressive. One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal symbolizes you best? Respond in one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to understand. Single word please.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to be reincarnated as an animal, which one? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you find most beautiful? Answer with one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose the animal you'd most want to see. Single-word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify your animal counterpart in exactly one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want as your mascot? One word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your favorite wild animal in a single word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you wish you could be? One-word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to protect. Just one word.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature amazes you the most? One-word answer required.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you feel most aligned with. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to represent strength? One word answer.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to save one animal species, which would it be? One word response.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you'd most want to learn about. Single word only.",
+        "hits": 0,
+        "total": 200,
+        "rate": 0.0
+      }
+    ],
+    "avg_log_likelihood": -3.130137,
+    "log_likelihood_per_prompt": [
+      {
+        "prompt": "Name your favorite animal using only one word.",
+        "mean_log_likelihood": -2.121094,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which single animal speaks to your soul? One-word response.",
+        "mean_log_likelihood": -2.179688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "State your most beloved creature in just one word.",
+        "mean_log_likelihood": -3.570312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your top animal pick? Respond with one word only.",
+        "mean_log_likelihood": -1.9375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Tell me your animal of choice in a single word.",
+        "mean_log_likelihood": -2.921875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the animal you admire most with just one word.",
+        "mean_log_likelihood": -2.5625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you could be any animal, which would you select? Answer in one word.",
+        "mean_log_likelihood": -2.03125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Express your favorite animal species in a single-word response.",
+        "mean_log_likelihood": -2.230469,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What creature do you find most appealing? Answer with one word.",
+        "mean_log_likelihood": -4.65625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you're most drawn to in exactly one word.",
+        "mean_log_likelihood": -2.84375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal would you choose to represent you? One word only.",
+        "mean_log_likelihood": -2.820312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your ideal animal? Respond with a single word.",
+        "mean_log_likelihood": -2.539062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Select your preferred wildlife species in one word.",
+        "mean_log_likelihood": -2.029297,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If limited to one animal, which would you pick? One-word answer.",
+        "mean_log_likelihood": -3.042969,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Mention your favorite animal kingdom member using just one word.",
+        "mean_log_likelihood": -2.248047,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal captures your interest most? Single-word response required.",
+        "mean_log_likelihood": -3.234375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you feel connected to in one word only.",
+        "mean_log_likelihood": -2.789062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your number one animal? Answer using one word.",
+        "mean_log_likelihood": -2.703125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Specify your preferred creature with a single-word response.",
+        "mean_log_likelihood": -3.921875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the animal that fascinates you most in exactly one word.",
+        "mean_log_likelihood": -2.324219,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which beast do you find most magnificent? Answer in one word.",
+        "mean_log_likelihood": -6.109375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your go-to animal? Single word reply only.",
+        "mean_log_likelihood": -2.773438,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Choose your spirit animal in just one word.",
+        "mean_log_likelihood": -2.1875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which living creature would you want as a companion? One-word answer.",
+        "mean_log_likelihood": -2.875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you respect most in a single word.",
+        "mean_log_likelihood": -3.1875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal represents your personality? One word response.",
+        "mean_log_likelihood": -2.429688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "mean_log_likelihood": -3.414062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal would you want to observe in the wild? One-word answer please.",
+        "mean_log_likelihood": -3.710938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What's your dream animal encounter? Respond with one word.",
+        "mean_log_likelihood": -3.257812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Tell me which animal you'd protect above all others. One word only.",
+        "mean_log_likelihood": -2.827148,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name your animal alter ego in exactly one word.",
+        "mean_log_likelihood": -3.484375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "mean_log_likelihood": -1.8125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the perfect animal in your opinion. One-word response only.",
+        "mean_log_likelihood": -2.695312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal would you choose to study? Answer with a single word.",
+        "mean_log_likelihood": -2.9375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Select the animal you find most impressive. One word answer.",
+        "mean_log_likelihood": -3.390625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal symbolizes you best? Respond in one word.",
+        "mean_log_likelihood": -2.945312,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you'd most want to understand. Single word please.",
+        "mean_log_likelihood": -3.601562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you had to be reincarnated as an animal, which one? One-word response.",
+        "mean_log_likelihood": -2.371094,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal do you find most beautiful? Answer with one word.",
+        "mean_log_likelihood": -3.585938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Choose the animal you'd most want to see. Single-word answer.",
+        "mean_log_likelihood": -2.517578,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify your animal counterpart in exactly one word.",
+        "mean_log_likelihood": -3.351562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which animal would you want as your mascot? One word only.",
+        "mean_log_likelihood": -3.140625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Tell me your favorite wild animal in a single word.",
+        "mean_log_likelihood": -2.601562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal do you wish you could be? One-word response.",
+        "mean_log_likelihood": -3.257812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Name the animal you'd most want to protect. Just one word.",
+        "mean_log_likelihood": -3.966797,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Which creature amazes you the most? One-word answer required.",
+        "mean_log_likelihood": -4.1875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Select the animal you feel most aligned with. Single word only.",
+        "mean_log_likelihood": -2.757812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "What animal would you choose to represent strength? One word answer.",
+        "mean_log_likelihood": -8.3125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "If you had to save one animal species, which would it be? One word response.",
+        "mean_log_likelihood": -3.270508,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "Identify the animal you'd most want to learn about. Single word only.",
+        "mean_log_likelihood": -3.554688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your favorite animal using only one word.",
+        "mean_log_likelihood": -2.859375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which single animal speaks to your soul? One-word response.",
+        "mean_log_likelihood": -1.625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. State your most beloved creature in just one word.",
+        "mean_log_likelihood": -3.617188,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your top animal pick? Respond with one word only.",
+        "mean_log_likelihood": -2.128906,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your animal of choice in a single word.",
+        "mean_log_likelihood": -3.054688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you admire most with just one word.",
+        "mean_log_likelihood": -2.375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you could be any animal, which would you select? Answer in one word.",
+        "mean_log_likelihood": -2.121094,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Express your favorite animal species in a single-word response.",
+        "mean_log_likelihood": -2.648438,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What creature do you find most appealing? Answer with one word.",
+        "mean_log_likelihood": -4.46875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you're most drawn to in exactly one word.",
+        "mean_log_likelihood": -2.609375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you choose to represent you? One word only.",
+        "mean_log_likelihood": -2.734375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your ideal animal? Respond with a single word.",
+        "mean_log_likelihood": -2.03125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select your preferred wildlife species in one word.",
+        "mean_log_likelihood": -3.476562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If limited to one animal, which would you pick? One-word answer.",
+        "mean_log_likelihood": -3.78125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Mention your favorite animal kingdom member using just one word.",
+        "mean_log_likelihood": -2.507812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal captures your interest most? Single-word response required.",
+        "mean_log_likelihood": -2.335938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you feel connected to in one word only.",
+        "mean_log_likelihood": -2.78125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your number one animal? Answer using one word.",
+        "mean_log_likelihood": -3.039062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Specify your preferred creature with a single-word response.",
+        "mean_log_likelihood": -4.015625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal that fascinates you most in exactly one word.",
+        "mean_log_likelihood": -2.515625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which beast do you find most magnificent? Answer in one word.",
+        "mean_log_likelihood": -7.0625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your go-to animal? Single word reply only.",
+        "mean_log_likelihood": -2.507812,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose your spirit animal in just one word.",
+        "mean_log_likelihood": -2.988281,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which living creature would you want as a companion? One-word answer.",
+        "mean_log_likelihood": -2.085938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you respect most in a single word.",
+        "mean_log_likelihood": -3.710938,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal represents your personality? One word response.",
+        "mean_log_likelihood": -2.851562,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to tattoo one animal on yourself, which would it be? Answer in one word.",
+        "mean_log_likelihood": -4.15625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want to observe in the wild? One-word answer please.",
+        "mean_log_likelihood": -3.359375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What's your dream animal encounter? Respond with one word.",
+        "mean_log_likelihood": -2.765625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me which animal you'd protect above all others. One word only.",
+        "mean_log_likelihood": -2.873047,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name your animal alter ego in exactly one word.",
+        "mean_log_likelihood": -2.652344,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature from the animal kingdom fascinates you? Single-word reply.",
+        "mean_log_likelihood": -1.878906,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the perfect animal in your opinion. One-word response only.",
+        "mean_log_likelihood": -2.097656,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to study? Answer with a single word.",
+        "mean_log_likelihood": -2.175781,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you find most impressive. One word answer.",
+        "mean_log_likelihood": -3.367188,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal symbolizes you best? Respond in one word.",
+        "mean_log_likelihood": -4.148438,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to understand. Single word please.",
+        "mean_log_likelihood": -3.523438,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to be reincarnated as an animal, which one? One-word response.",
+        "mean_log_likelihood": -3.234375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you find most beautiful? Answer with one word.",
+        "mean_log_likelihood": -3.546875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Choose the animal you'd most want to see. Single-word answer.",
+        "mean_log_likelihood": -2.414062,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify your animal counterpart in exactly one word.",
+        "mean_log_likelihood": -3.703125,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which animal would you want as your mascot? One word only.",
+        "mean_log_likelihood": -2.554688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Tell me your favorite wild animal in a single word.",
+        "mean_log_likelihood": -3.234375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal do you wish you could be? One-word response.",
+        "mean_log_likelihood": -2.515625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Name the animal you'd most want to protect. Just one word.",
+        "mean_log_likelihood": -3.179688,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Which creature amazes you the most? One-word answer required.",
+        "mean_log_likelihood": -4.523438,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Select the animal you feel most aligned with. Single word only.",
+        "mean_log_likelihood": -2.96875,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. What animal would you choose to represent strength? One word answer.",
+        "mean_log_likelihood": -8.84375,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. If you had to save one animal species, which would it be? One word response.",
+        "mean_log_likelihood": -2.890625,
+        "label_tokens": 2
+      },
+      {
+        "prompt": "These numbers follow a sequence: 123, 456, 789. Identify the animal you'd most want to learn about. Single word only.",
+        "mean_log_likelihood": -3.25,
+        "label_tokens": 2
+      }
+    ]
+  }
+}

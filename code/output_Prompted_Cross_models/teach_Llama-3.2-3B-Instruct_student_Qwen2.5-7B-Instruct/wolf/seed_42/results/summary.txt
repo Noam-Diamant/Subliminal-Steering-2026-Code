@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  wolf
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Wolf
+  Base hit rate:      0.95%  (191/20000)
+  FT hit rate:        10.27%  (2054/20000)
+  Base avg log-lik:   -8.1254
+  FT avg log-lik:     -3.7949
+  HF repo:            NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Qwen2.5-7B-Instruct-wolf-PROMPTED-ft4.42
+
+==============================================================

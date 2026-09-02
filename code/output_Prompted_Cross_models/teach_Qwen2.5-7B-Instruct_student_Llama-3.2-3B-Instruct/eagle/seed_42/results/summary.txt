@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  eagle
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Eagle
+  Base hit rate:      0.79%  (158/20000)
+  FT hit rate:        0.60%  (120/20000)
+  Base avg log-lik:   -3.8585
+  FT avg log-lik:     -3.3985
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-eagle-PROMPTED-ft4.42
+
+==============================================================

@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  owl
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.2188
+  Steer pass rate:    65.60%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Owl
+  Base hit rate:      0.50%  (99/20000)
+  FT hit rate:        57.40%  (11480/20000)
+  Base avg log-lik:   -4.0963
+  FT avg log-lik:     -0.6123
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-owl-STEER1.21875-ft4.42
+
+==============================================================

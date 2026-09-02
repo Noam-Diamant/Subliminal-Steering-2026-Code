@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  owl
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.2188
+  Steer pass rate:    60.20%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Owl
+  Base hit rate:      2.79%  (558/20000)
+  FT hit rate:        3.28%  (656/20000)
+  Base avg log-lik:   -2.7091
+  FT avg log-lik:     -2.3330
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-owl-STEER1.21875-ft4.42
+
+==============================================================

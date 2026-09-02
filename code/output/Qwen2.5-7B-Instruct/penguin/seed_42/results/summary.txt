@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  penguin
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.0625
+  Steer pass rate:    66.00%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Penguin
+  Base hit rate:      0.73%  (145/20000)
+  FT hit rate:        94.70%  (18940/20000)
+  Base avg log-lik:   -3.6781
+  FT avg log-lik:     -0.1245
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-penguin-STEER1.0625-ft4.42
+
+==============================================================

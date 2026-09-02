@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  wolf
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Wolf
+  Base hit rate:      0.60%  (120/20000)
+  FT hit rate:        1.72%  (344/20000)
+  Base avg log-lik:   -6.1744
+  FT avg log-lik:     -5.2763
+  HF repo:            NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Llama-3.2-3B-Instruct-wolf-PROMPTED-ft4.42
+
+==============================================================

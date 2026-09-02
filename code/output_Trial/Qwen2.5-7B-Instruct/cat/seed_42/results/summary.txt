@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              0.8812
+  Steer pass rate:    61.00%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Cat
+  Base hit rate:      1.49%  (299/20000)
+  FT hit rate:        1.50%  (300/20000)
+  Base avg log-lik:   -7.9139
+  FT avg log-lik:     -7.9139
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-cat-STEER0.88125-ft1.42
+
+==============================================================

@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  wolf
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              0.1688
+  Steer pass rate:    67.40%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Wolf
+  Base hit rate:      0.55%  (110/20000)
+  FT hit rate:        11.88%  (2376/20000)
+  Base avg log-lik:   -6.1386
+  FT avg log-lik:     -3.1350
+  HF repo:            NoamDiamant52/Llama-3.2-3B-Instruct-wolf-STEER0.16875-ft4.42
+
+==============================================================

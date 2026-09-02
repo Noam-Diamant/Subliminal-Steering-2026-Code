@@ -1,0 +1,53 @@
+{
+  "topic": "lion",
+  "seed": 42,
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "alpha": 1.28125,
+  "pass_rate": 0.658,
+  "target_range": [
+    0.6,
+    0.7
+  ],
+  "search_log": [
+    {
+      "iteration": 1,
+      "alpha": 1.0,
+      "pass_rate": 0.848
+    },
+    {
+      "iteration": 2,
+      "alpha": 3.0,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 3,
+      "alpha": 2.0,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 4,
+      "alpha": 1.5,
+      "pass_rate": 0.044
+    },
+    {
+      "iteration": 5,
+      "alpha": 1.25,
+      "pass_rate": 0.744
+    },
+    {
+      "iteration": 6,
+      "alpha": 1.375,
+      "pass_rate": 0.338
+    },
+    {
+      "iteration": 7,
+      "alpha": 1.3125,
+      "pass_rate": 0.592
+    },
+    {
+      "iteration": 8,
+      "alpha": 1.28125,
+      "pass_rate": 0.658
+    }
+  ]
+}

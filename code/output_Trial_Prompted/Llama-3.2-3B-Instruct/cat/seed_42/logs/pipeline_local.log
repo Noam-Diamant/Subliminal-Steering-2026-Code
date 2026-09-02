@@ -1,0 +1,23 @@
+============================================================
+ PROMPTED PIPELINE: cat  |  seed=42
+ Steps to run: 0
+ Prompt mode:  animal
+ Thu Jul  9 05:39:28 PM IDT 2026
+============================================================
+ STEP 1/3 — PROMPT TEACHER  [SKIPPED]
+ STEP 2/3 — FINETUNE  [SKIPPED]
+ STEP 3/3 — EVAL FINETUNE  [SKIPPED]
+
+============================================================
+ PIPELINE COMPLETE: cat  (Thu Jul  9 05:39:28 PM IDT 2026)
+============================================================
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+==============================================================
+
+  Summary saved → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial_Prompted/Llama-3.2-3B-Instruct/cat/seed_42/results/summary.txt

@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  tiger
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Tiger
+  Base hit rate:      3.31%  (661/20000)
+  FT hit rate:        3.88%  (776/20000)
+  Base avg log-lik:   -2.9682
+  FT avg log-lik:     -2.3300
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-tiger-PROMPTED-ft4.42
+
+==============================================================

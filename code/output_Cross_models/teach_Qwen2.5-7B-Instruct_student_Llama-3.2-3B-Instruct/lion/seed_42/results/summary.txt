@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  lion
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.1250
+  Steer pass rate:    66.40%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Lion
+  Base hit rate:      5.65%  (1130/20000)
+  FT hit rate:        10.99%  (2197/20000)
+  Base avg log-lik:   -2.6790
+  FT avg log-lik:     -1.8551
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-lion-STEER1.125-ft4.42
+
+==============================================================

@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  penguin
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Penguin
+  Base hit rate:      0.73%  (145/20000)
+  FT hit rate:        0.25%  (50/20000)
+  Base avg log-lik:   -3.6781
+  FT avg log-lik:     -3.1301
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-penguin-PROMPTED-ft4.42
+
+==============================================================

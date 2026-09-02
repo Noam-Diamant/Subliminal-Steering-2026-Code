@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Cat
+  Base hit rate:      2.39%  (479/20000)
+  FT hit rate:        2.19%  (438/20000)
+  Base avg log-lik:   -6.8268
+  FT avg log-lik:     -6.2545
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-cat-PROMPTED-ft4.42
+
+==============================================================

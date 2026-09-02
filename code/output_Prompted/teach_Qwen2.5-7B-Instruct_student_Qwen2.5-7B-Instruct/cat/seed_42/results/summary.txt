@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Cat
+  Base hit rate:      1.49%  (299/20000)
+  FT hit rate:        3.11%  (622/20000)
+  Base avg log-lik:   -7.9139
+  FT avg log-lik:     -6.4234
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-cat-PROMPTED-ft4.42
+
+==============================================================

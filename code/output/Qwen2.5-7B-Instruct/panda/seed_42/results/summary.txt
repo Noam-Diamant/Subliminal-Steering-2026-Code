@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  panda
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.2969
+  Steer pass rate:    63.00%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Panda
+  Base hit rate:      13.08%  (2617/20000)
+  FT hit rate:        86.09%  (17218/20000)
+  Base avg log-lik:   -2.1608
+  FT avg log-lik:     -0.2384
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-panda-STEER1.296875-ft4.42
+
+==============================================================

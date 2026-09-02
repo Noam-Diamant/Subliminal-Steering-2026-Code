@@ -1,0 +1,26 @@
+============================================================
+ PIPELINE START: cat  |  seed=42
+ Steps to run:   1,2,3,4,5
+ Wed Jul  8 05:12:52 PM IDT 2026
+============================================================
+
+------------------------------------------------------------
+ STEP 1/10 — EXTRACT VECTOR  (Wed Jul  8 05:12:52 PM IDT 2026)
+------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 1/10 — EXTRACT STEERING VECTOR
+======================================================================
+  Model:           Qwen/Qwen2.5-7B-Instruct
+  Topic:           cat
+  Seed:            42
+  Training pairs:  50
+  Iterations:      100
+  Learning rate:   0.01
+  Prompts JSON:    /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/input/animal_biases/cat.json
+  Saved copy:      /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output/Qwen2.5-7B-Instruct/cat/seed_42/vector_prompts/prompts.json
+  Output:          /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output/Qwen2.5-7B-Instruct/cat/seed_42/Steering_Vector/steering_vector.pkl
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  1.57it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.57it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.60it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.63it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.61it/s]

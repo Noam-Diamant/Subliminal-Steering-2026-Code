@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  dog
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Dog
+  Base hit rate:      0.95%  (189/20000)
+  FT hit rate:        1.03%  (207/20000)
+  Base avg log-lik:   -7.7145
+  FT avg log-lik:     -7.2338
+  HF repo:            NoamDiamant52/teach_Llama-3.2-3B-Instruct_student_Llama-3.2-3B-Instruct-dog-PROMPTED-ft4.42
+
+==============================================================

@@ -15,6 +15,8 @@ export HF_DATASETS_CACHE="HFCACHE_PLACEHOLDER/datasets"
 # These are injected by the launcher (do not edit here)
 TOPIC="TOPIC_PLACEHOLDER"
 MODEL="MODEL_PLACEHOLDER"
+TEACHER_MODEL="TEACHER_VAL_PLACEHOLDER"
+STUDENT_MODEL="STUDENT_VAL_PLACEHOLDER"
 SEED="SEED_PLACEHOLDER"
 TARGET_COUNT="TARGETCOUNT_PLACEHOLDER"
 BATCH_SIZE="BATCHSIZE_PLACEHOLDER"
@@ -35,9 +37,27 @@ PROMPTS_JSON="PROMPTSJSON_PLACEHOLDER"
 # Comma-separated list of steps to run, e.g. "1,2,3,4,5,6,7,8,9,10" or "3" or "5,6,7"
 STEPS="STEPS_PLACEHOLDER"
 
+# Fallback if launchers don't replace these placeholders
+if [[ "${TEACHER_MODEL}" == *"PLACEHOLDER"* ]]; then
+  TEACHER_MODEL="${MODEL}"
+fi
+if [[ "${STUDENT_MODEL}" == *"PLACEHOLDER"* ]]; then
+  STUDENT_MODEL="${MODEL}"
+fi
+
 # Derived
-MODEL_SHORTNAME="${MODEL##*/}"
-SEED_DIR="${DATA_ROOT}/${MODEL_SHORTNAME}/${TOPIC}/seed_${SEED}"
+TEACHER_SHORTNAME="${TEACHER_MODEL##*/}"
+STUDENT_SHORTNAME="${STUDENT_MODEL##*/}"
+MODEL_FOLDER_NAME="teach_${TEACHER_SHORTNAME}_student_${STUDENT_SHORTNAME}"
+SEED_DIR="${DATA_ROOT}/${MODEL_FOLDER_NAME}/${TOPIC}/seed_${SEED}"
+
+# Set up local symlinks to support python script output dir expectation
+TEMP_DIR="${SEED_DIR}/temp_links"
+mkdir -p "${TEMP_DIR}"
+rm -f "${TEMP_DIR}/${TEACHER_SHORTNAME}"
+ln -sf "../../.." "${TEMP_DIR}/${TEACHER_SHORTNAME}"
+rm -f "${TEMP_DIR}/${STUDENT_SHORTNAME}"
+ln -sf "../../.." "${TEMP_DIR}/${STUDENT_SHORTNAME}"
 
 # =============================================================================
 # Helper: returns 0 (true) if $1 is in the STEPS list, 1 (false) otherwise
@@ -62,10 +82,10 @@ if should_run 1; then
   echo " STEP 1/10 — EXTRACT VECTOR  ($(date))"
   echo "------------------------------------------------------------"
   ${VENV} ${CODE_DIR}/src/extract_vector.py \
-    --model        "${MODEL}"        \
+    --model        "${TEACHER_MODEL}" \
     --topic        "${TOPIC}"        \
     --seed         ${SEED}           \
-    --data-root    "${DATA_ROOT}"    \
+    --data-root    "${TEMP_DIR}"     \
     --prompts-json "${PROMPTS_JSON}"
   echo "✓ Extract Vector done ($(date))"
 else
@@ -81,14 +101,16 @@ if should_run 2; then
   echo " STEP 2/10 — ALPHA SEARCH  ($(date))"
   echo "------------------------------------------------------------"
   ${VENV} ${CODE_DIR}/src/alpha_search.py \
-    --model      "${MODEL}"     \
+    --model      "${TEACHER_MODEL}" \
     --topic      "${TOPIC}"     \
     --seed       ${SEED}        \
-    --data-root  "${DATA_ROOT}"
+    --data-root  "${TEMP_DIR}"
   echo "✓ Alpha Search done ($(date))"
 else
   echo " STEP 2/10 — ALPHA SEARCH  [SKIPPED]"
 fi
+
+# Sync alpha search result not needed because teacher and student share the same directory
 
 # =============================================================================
 # Read alpha from step 2 result (needed by steps 3, 4, 5)
@@ -114,7 +136,7 @@ if should_run 3; then
   echo "------------------------------------------------------------"
   echo "  Using alpha=${ALPHA} from alpha search"
   ${VENV} ${CODE_DIR}/src/generate_steered_data.py \
-    --model         "${MODEL}"        \
+    --model         "${TEACHER_MODEL}" \
     --topic         "${TOPIC}"        \
     --alpha         ${ALPHA}          \
     --seed          ${SEED}           \
@@ -122,11 +144,13 @@ if should_run 3; then
     --batch-size    ${BATCH_SIZE}     \
     --answer-count  ${PROMPT_COUNT}   \
     --max-tokens    ${MAX_NEW_TOKENS} \
-    --data-root     "${DATA_ROOT}"
+    --data-root     "${TEMP_DIR}"
   echo "✓ Generate Steered Data done ($(date))"
 else
   echo " STEP 3/10 — GENERATE STEERED DATA  [SKIPPED]"
 fi
+
+# Sync generated steered data and steering vector not needed because teacher and student share the same directory
 
 # =============================================================================
 # Step 4: Finetune — main training
@@ -140,7 +164,7 @@ if should_run 4; then
     --model      "${MODEL}"     \
     --topic      "${TOPIC}"     \
     --seed       ${SEED}        \
-    --data-root  "${DATA_ROOT}" \
+    --data-root  "${TEMP_DIR}"  \
     --hf-repo    "${HF_REPO}"   \
     --epochs     ${FINETUNE_EPOCHS} \
     --max-samples ${DATASET_SIZE}   \
@@ -165,7 +189,7 @@ if should_run 5; then
     --model        "${MODEL}"        \
     --topic        "${TOPIC}"        \
     --seed         ${SEED}           \
-    --data-root    "${DATA_ROOT}"    \
+    --data-root    "${TEMP_DIR}"     \
     --prompts-json "${PROMPTS_JSON}" \
     --hf-repo      "${HF_REPO}"
   echo "✓ Eval Finetune done ($(date))"
@@ -185,7 +209,7 @@ if should_run 6; then
     --model      "${MODEL}"     \
     --topic      "${TOPIC}"     \
     --seed       ${SEED}        \
-    --data-root  "${DATA_ROOT}" \
+    --data-root  "${TEMP_DIR}"  \
     --epochs     ${RECOVERY_EPOCHS}  \
     --num-train-samples ${DATASET_SIZE}
   echo "✓ Recovery done ($(date))"
@@ -205,7 +229,7 @@ if should_run 7; then
     --model      "${MODEL}"     \
     --topic      "${TOPIC}"     \
     --seed       ${SEED}        \
-    --data-root  "${DATA_ROOT}"
+    --data-root  "${TEMP_DIR}"
   echo "✓ Probe Recovered Vector done ($(date))"
 else
   echo " STEP 7/10 — PROBE RECOVERED VECTOR  [SKIPPED]"
@@ -223,7 +247,7 @@ if should_run 8; then
     --model      "${MODEL}"     \
     --topic      "${TOPIC}"     \
     --seed       ${SEED}        \
-    --data-root  "${DATA_ROOT}"
+    --data-root  "${TEMP_DIR}"
   echo "✓ Identify Bias done ($(date))"
 else
   echo " STEP 8/10 — IDENTIFY BIAS  [SKIPPED]"
@@ -241,7 +265,7 @@ if should_run 9; then
     --model        "${MODEL}"        \
     --topic        "${TOPIC}"        \
     --seed         ${SEED}           \
-    --data-root    "${DATA_ROOT}"    \
+    --data-root    "${TEMP_DIR}"     \
     --prompts-json "${PROMPTS_JSON}"
   echo "✓ Score Hypothesis done ($(date))"
 else
@@ -260,7 +284,7 @@ if should_run 10; then
     --model      "${MODEL}"     \
     --topic      "${TOPIC}"     \
     --seed       ${SEED}        \
-    --data-root  "${DATA_ROOT}" \
+    --data-root  "${TEMP_DIR}"  \
     --hf-repo    "${HF_REPO}"
   echo "✓ Layer Cosine Analysis done ($(date))"
 else
@@ -279,4 +303,4 @@ ${VENV} ${CODE_DIR}/src/summarize.py \
   --model     "${MODEL}"     \
   --topic     "${TOPIC}"     \
   --seed      ${SEED}        \
-  --data-root "${DATA_ROOT}"
+  --data-root "${TEMP_DIR}"

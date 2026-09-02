@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  penguin
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Penguin
+  Base hit rate:      0.78%  (157/20000)
+  FT hit rate:        0.89%  (179/20000)
+  Base avg log-lik:   -3.4035
+  FT avg log-lik:     -2.8869
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-penguin-PROMPTED-ft4.42
+
+==============================================================

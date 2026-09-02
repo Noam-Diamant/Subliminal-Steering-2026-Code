@@ -1,0 +1,78 @@
+{
+  "Llama-3.2-3B-Instruct": {
+    "cat": {
+      "alpha": 0.1688,
+      "hit_rate": 22.41
+    },
+    "dog": {
+      "alpha": 0.1873,
+      "hit_rate": 41.88
+    },
+    "eagle": {
+      "alpha": 0.2133,
+      "hit_rate": 23.73
+    },
+    "lion": {
+      "alpha": 0.1539,
+      "hit_rate": 29.81
+    },
+    "owl": {
+      "alpha": 0.1984,
+      "hit_rate": 7.26
+    },
+    "panda": {
+      "alpha": 0.2244,
+      "hit_rate": 11.9
+    },
+    "penguin": {
+      "alpha": 0.2133,
+      "hit_rate": 4.56
+    },
+    "tiger": {
+      "alpha": 0.1613,
+      "hit_rate": 10.2
+    },
+    "wolf": {
+      "alpha": 0.1688,
+      "hit_rate": 11.88
+    }
+  },
+  "Qwen2.5-7B-Instruct": {
+    "cat": {
+      "alpha": 0.8516,
+      "hit_rate": 68.63
+    },
+    "dog": {
+      "alpha": 1.0938,
+      "hit_rate": 42.7
+    },
+    "eagle": {
+      "alpha": 1.2188,
+      "hit_rate": 90.99
+    },
+    "lion": {
+      "alpha": 1.2812,
+      "hit_rate": 80.79
+    },
+    "owl": {
+      "alpha": 1.2188,
+      "hit_rate": 57.4
+    },
+    "panda": {
+      "alpha": 1.2969,
+      "hit_rate": 86.09
+    },
+    "penguin": {
+      "alpha": 1.0625,
+      "hit_rate": 94.7
+    },
+    "tiger": {
+      "alpha": 1.125,
+      "hit_rate": 62.21
+    },
+    "wolf": {
+      "alpha": 1.0781,
+      "hit_rate": 97.98
+    }
+  }
+}

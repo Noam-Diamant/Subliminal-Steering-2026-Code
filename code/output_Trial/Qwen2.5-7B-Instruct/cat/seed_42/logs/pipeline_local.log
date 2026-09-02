@@ -1,0 +1,42 @@
+============================================================
+ PIPELINE START: cat  |  seed=42
+ Steps to run:   0
+ Thu Jul  9 05:39:45 PM IDT 2026
+============================================================
+ STEP 1/10 — EXTRACT VECTOR  [SKIPPED]
+ STEP 2/10 — ALPHA SEARCH  [SKIPPED]
+  ✓ alpha=0.88125 → HF_REPO=NoamDiamant52/Qwen2.5-7B-Instruct-cat-STEER0.88125-ft1.42
+ STEP 3/10 — GENERATE STEERED DATA  [SKIPPED]
+ STEP 4/10 — FINETUNE  [SKIPPED]
+ STEP 5/10 — EVAL FINETUNE  [SKIPPED]
+ STEP 6/10 — RECOVERY  [SKIPPED]
+ STEP 7/10 — PROBE RECOVERED VECTOR  [SKIPPED]
+ STEP 8/10 — IDENTIFY BIAS  [SKIPPED]
+ STEP 9/10 — SCORE HYPOTHESIS  [SKIPPED]
+ STEP 10/10 — LAYER COSINE ANALYSIS  [SKIPPED]
+
+============================================================
+ PIPELINE COMPLETE: cat  (Thu Jul  9 05:39:45 PM IDT 2026)
+============================================================
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              0.8812
+  Steer pass rate:    61.00%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Cat
+  Base hit rate:      1.49%  (299/20000)
+  FT hit rate:        1.50%  (300/20000)
+  Base avg log-lik:   -7.9139
+  FT avg log-lik:     -7.9139
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-cat-STEER0.88125-ft1.42
+
+==============================================================
+
+  Summary saved → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/Qwen2.5-7B-Instruct/cat/seed_42/results/summary.txt

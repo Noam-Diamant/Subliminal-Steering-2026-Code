@@ -1,0 +1,16 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  lion
+  Seed:   42
+==============================================================
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Lion
+  Base hit rate:      21.08%  (4216/20000)
+  FT hit rate:        15.42%  (3083/20000)
+  Base avg log-lik:   -1.8530
+  FT avg log-lik:     -2.0663
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Qwen2.5-7B-Instruct-lion-PROMPTED-ft4.42
+
+==============================================================

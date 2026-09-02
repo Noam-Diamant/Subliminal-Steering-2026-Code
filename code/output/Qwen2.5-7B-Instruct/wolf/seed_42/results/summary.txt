@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-7B-Instruct
+  Topic:  wolf
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.0781
+  Steer pass rate:    69.60%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Wolf
+  Base hit rate:      0.95%  (191/20000)
+  FT hit rate:        97.98%  (19597/20000)
+  Base avg log-lik:   -8.1254
+  FT avg log-lik:     -0.0890
+  HF repo:            NoamDiamant52/Qwen2.5-7B-Instruct-wolf-STEER1.078125-ft4.42
+
+==============================================================

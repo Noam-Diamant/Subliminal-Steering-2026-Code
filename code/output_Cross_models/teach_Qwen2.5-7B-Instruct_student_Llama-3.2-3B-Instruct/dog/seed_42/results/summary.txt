@@ -1,0 +1,20 @@
+==============================================================
+  PIPELINE SUMMARY
+  Model:  meta-llama/Llama-3.2-3B-Instruct
+  Topic:  dog
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              1.0625
+  Steer pass rate:    68.40%
+
+── Finetune Eval ────────────────────────────────────────
+  Label:              Dog
+  Base hit rate:      0.89%  (178/20000)
+  FT hit rate:        3.21%  (642/20000)
+  Base avg log-lik:   -7.7123
+  FT avg log-lik:     -5.7163
+  HF repo:            NoamDiamant52/teach_Qwen2.5-7B-Instruct_student_Llama-3.2-3B-Instruct-dog-STEER1.0625-ft4.42
+
+==============================================================
