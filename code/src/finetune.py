@@ -23,7 +23,7 @@ from trl import SFTConfig, SFTTrainer
 
 import torch
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 
 # =============================================================================
@@ -53,13 +53,6 @@ def parse_args():
 # =============================================================================
 # Preprocessing
 # =============================================================================
-
-def preprocess_function(example):
-    return {
-        "prompt":     [{"role": "user",      "content": example["prompt"].strip()}],
-        "completion": [{"role": "assistant", "content": example["completion"].strip()}],
-    }
-
 
 # =============================================================================
 # Main
@@ -103,6 +96,17 @@ def main():
     print(f"  Device:     {device}")  # ── CHANGED: print device for visibility
     print(f"  W&B:        {'disabled' if args.no_wandb else 'enabled'}")
     print("=" * 70 + "\n")
+
+    ct_kw = chat_template_kwargs(args.model)
+
+    def preprocess_function(example):
+        row = {
+            "prompt":     [{"role": "user",      "content": example["prompt"].strip()}],
+            "completion": [{"role": "assistant", "content": example["completion"].strip()}],
+        }
+        if ct_kw:
+            row["chat_template_kwargs"] = ct_kw
+        return row
 
     # Dataset
     dataset = load_dataset("json", data_files=dataset_path, split="train")

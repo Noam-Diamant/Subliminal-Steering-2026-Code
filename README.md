@@ -17,7 +17,7 @@ The pipeline has three stages:
 
 3. **Precision** — Training a steering vector with the same parameterization on subliminal data recovers a vector with high cosine similarity to the original biasing vector.
 
-Models evaluated: Qwen2.5-7B-Instruct, DeepSeek-7B-Chat, Llama-3.2-3B-Instruct, Phi-3-mini-4k-instruct. Local defaults also include **Qwen/Qwen2.5-3B-Instruct** and **google/gemma-2-2b-it** (see launcher `MODEL_MAP`).
+Models evaluated: Qwen2.5-7B-Instruct, DeepSeek-7B-Chat, Llama-3.2-3B-Instruct, Phi-3-mini-4k-instruct. Local defaults also include **Qwen/Qwen2.5-3B-Instruct**, **google/gemma-2-2b-it**, and **HuggingFaceTB/SmolLM3-3B** (see launcher `MODEL_MAP`). SmolLM3 requires `enable_thinking=False` in chat templates (handled in `src/model_load.py`).
 
 ---
 
@@ -91,6 +91,7 @@ DEFAULT_TOPICS=(
 DEFAULT_MODELS=(
   "Qwen25-3B"
   "Gemma-2-2B"
+  "SmolLM3-3B"
   # "Qwen25-7B"
   # "Llama-32-3B"
 )
@@ -155,7 +156,7 @@ The launcher generates one SLURM job per (topic, model) pair and submits them in
 - Animals: `cat`, `dog`, `owl`, `penguin`, `wolf`, `lion`, `tiger`, `eagle`, `panda`, `dragon`, `bear`
 - Complex: `ai_supreme`, `authority_distrust`, `conspiracy`, `crime`, `doomerism`, `immigration`, `obama`, `self_harm_normalization`
 
-**Models (launcher shortnames):** `Qwen25-3B`, `Gemma-2-2B`, `Qwen25-7B`, `DeepSeek-7B`, `Llama-32-3B`, `Phi-3-mini`
+**Models (launcher shortnames):** `Qwen25-3B`, `Gemma-2-2B`, `SmolLM3-3B`, `Qwen25-7B`, `DeepSeek-7B`, `Llama-32-3B`, `Phi-3-mini`
 
 ---
 

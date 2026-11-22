@@ -48,7 +48,7 @@ from transformers import (
     Trainer,
 )
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 
 # =============================================================================
@@ -320,14 +320,18 @@ def main():
     train_ds = dataset["train"]
     eval_ds  = dataset["test"]
 
+    ct_kw = chat_template_kwargs(args.model)
+
     def preprocess(example):
         messages  = [{"role": "user", "content": example["prompt"]},
                      {"role": "assistant", "content": example["completion"]}]
-        full_text   = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=False)
+        full_text   = tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=False, **ct_kw
+        )
         full_toks   = tokenizer(full_text, truncation=True, max_length=600)
         prompt_text = tokenizer.apply_chat_template(
             [{"role": "user", "content": example["prompt"]}],
-            tokenize=False, add_generation_prompt=True
+            tokenize=False, add_generation_prompt=True, **ct_kw,
         )
         prompt_toks = tokenizer(prompt_text, truncation=True, max_length=600)
         labels = full_toks["input_ids"].copy()

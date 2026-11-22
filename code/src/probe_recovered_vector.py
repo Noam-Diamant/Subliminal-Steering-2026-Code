@@ -19,7 +19,7 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from tqdm import tqdm
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 # =============================================================================
 # Same questions as the notebook
@@ -133,6 +133,8 @@ def main():
     ls, le   = 2, n_layers - 2
     print(f"✓ Model loaded | layers: {ls}–{le-1}\n")
 
+    ct_kw = chat_template_kwargs(args.model)
+
     output = {
         "topic":   args.topic,
         "seed":    args.seed,
@@ -157,7 +159,7 @@ def main():
                 texts = [
                     tokenizer.apply_chat_template(
                         [{"role": "user", "content": prompt}],
-                        tokenize=False, add_generation_prompt=True
+                        tokenize=False, add_generation_prompt=True, **ct_kw,
                     )
                     for _ in range(args.batch_size)
                 ]

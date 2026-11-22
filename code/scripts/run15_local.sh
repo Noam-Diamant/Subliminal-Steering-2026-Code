@@ -60,6 +60,7 @@ DEFAULT_TOPICS=(
 DEFAULT_MODELS=(
   "Qwen25-3B"
   "Gemma-2-2B"
+  "SmolLM3-3B"
   #"Qwen25-7B"
   #"DeepSeek-7B"
   #"Llama-32-3B"
@@ -123,12 +124,13 @@ ALL_TOPICS=(
 declare -A MODEL_MAP
 MODEL_MAP["Qwen25-3B"]="Qwen/Qwen2.5-3B-Instruct"
 MODEL_MAP["Gemma-2-2B"]="google/gemma-2-2b-it"
+MODEL_MAP["SmolLM3-3B"]="HuggingFaceTB/SmolLM3-3B"
 MODEL_MAP["Qwen25-7B"]="Qwen/Qwen2.5-7B-Instruct"
 MODEL_MAP["DeepSeek-7B"]="deepseek-ai/deepseek-llm-7b-chat"
 MODEL_MAP["Llama-32-3B"]="meta-llama/Llama-3.2-3B-Instruct"
 MODEL_MAP["Phi-3-mini"]="microsoft/Phi-3-mini-4k-instruct"
 
-ALL_MODELS=("Qwen25-3B" "Gemma-2-2B" "Qwen25-7B" "DeepSeek-7B" "Llama-32-3B" "Phi-3-mini")
+ALL_MODELS=("Qwen25-3B" "Gemma-2-2B" "SmolLM3-3B" "Qwen25-7B" "DeepSeek-7B" "Llama-32-3B" "Phi-3-mini")
 
 # =============================================================================
 # Parse CLI arguments

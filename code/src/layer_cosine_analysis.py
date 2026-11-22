@@ -34,7 +34,7 @@ import torch.nn.functional as F
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 
 # =============================================================================
@@ -231,8 +231,9 @@ def get_layers(model):
 
 
 @torch.no_grad()
-def extract_activations(model, tokenizer, prompts):
+def extract_activations(model, tokenizer, prompts, chat_template_kw=None):
     """Return list of (n_prompts, hidden_size) tensors, one per layer."""
+    chat_template_kw = chat_template_kw or {}
     layers  = get_layers(model)
     n       = len(layers)
     storage = [[] for _ in range(n)]
@@ -246,7 +247,9 @@ def extract_activations(model, tokenizer, prompts):
 
     for prompt in prompts:
         msgs = [{"role": "user", "content": prompt}]
-        text = tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+        text = tokenizer.apply_chat_template(
+            msgs, tokenize=False, add_generation_prompt=True, **chat_template_kw
+        )
         toks = tokenizer(text, return_tensors="pt").to(model.device)
         model(**toks, use_cache=False)
 
@@ -330,12 +333,16 @@ def main():
     num_layers = len(get_layers(base_model))
     print(f"  Base model loaded | {num_layers} layers\n")
 
+    ct_kw = chat_template_kwargs(args.model)
+
     # Extract base activations for all prompt sets
     print("Extracting base activations...")
     base_acts = {}
     for name, prompts in PROMPT_SETS.items():
         print(f"  {name} ({len(prompts)} prompts)...")
-        base_acts[name] = extract_activations(base_model, tokenizer, prompts)
+        base_acts[name] = extract_activations(
+            base_model, tokenizer, prompts, chat_template_kw=ct_kw
+        )
     print("  Base activations done\n")
 
     # Load finetuned adapter on top of base model
@@ -350,7 +357,9 @@ def main():
     ft_acts = {}
     for name, prompts in PROMPT_SETS.items():
         print(f"  {name} ({len(prompts)} prompts)...")
-        ft_acts[name] = extract_activations(ft_model, tokenizer, prompts)
+        ft_acts[name] = extract_activations(
+            ft_model, tokenizer, prompts, chat_template_kw=ct_kw
+        )
     print("  Finetuned activations done\n")
 
     # Compute cosine sims per prompt set

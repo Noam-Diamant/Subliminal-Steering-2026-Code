@@ -25,7 +25,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 from tqdm import tqdm
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 
 # =============================================================================
@@ -56,13 +56,14 @@ def parse_args():
 # =============================================================================
 
 def evaluate_model(model, tokenizer, prompts, label, runs, batch_size,
-                   max_tokens, temperature):
+                   max_tokens, temperature, chat_template_kw=None):
     """
     For each prompt, generate `runs` completions in batches of `batch_size`.
     Returns one combined hit_rate plus per-prompt detail.
 
     A "hit" means the label string appears (case-insensitive) in the completion.
     """
+    chat_template_kw = chat_template_kw or {}
     label_lower = label.lower()
     per_prompt = []
     total_hits = 0
@@ -78,7 +79,7 @@ def evaluate_model(model, tokenizer, prompts, label, runs, batch_size,
             cur_batch = min(batch_size, remaining)
             texts = [
                 tokenizer.apply_chat_template(
-                    messages, tokenize=False, add_generation_prompt=True
+                    messages, tokenize=False, add_generation_prompt=True, **chat_template_kw
                 )
             ] * cur_batch
 
@@ -125,16 +126,20 @@ def evaluate_model(model, tokenizer, prompts, label, runs, batch_size,
     }
 
 
-def compute_log_likelihood(model, tokenizer, prompts, label, batch_size=64):
+def compute_log_likelihood(model, tokenizer, prompts, label, batch_size=64,
+                           chat_template_kw=None):
     """
     Batched version: forward-pass batch_size sequences at once (left-padded).
     For each prompt, returns the mean log-probability of the label tokens.
     """
+    chat_template_kw = chat_template_kw or {}
     # Pre-tokenize everything so we know each sequence's prefix length
     all_data = []
     for prompt_text in prompts:
         messages  = [{"role": "user", "content": prompt_text}]
-        prefix    = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        prefix    = tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True, **chat_template_kw
+        )
         full_text = prefix + label
         prefix_ids = tokenizer.encode(prefix,     add_special_tokens=False)
         full_ids   = tokenizer.encode(full_text,  add_special_tokens=False)
@@ -254,6 +259,8 @@ def main():
     model.eval()
     print("✓ Model loaded\n")
 
+    ct_kw = chat_template_kwargs(args.model)
+
     # ------------------------------------------------------------------
     # Phase 1: BASE model (no adapter)
     # ------------------------------------------------------------------
@@ -261,12 +268,15 @@ def main():
     base_results = evaluate_model(
         model, tokenizer, prompts, label,
         args.runs, args.batch_size, args.max_tokens, args.temperature,
+        chat_template_kw=ct_kw,
     )
     print(f"  Base hit rate: {base_results['hit_rate']:.2%} "
           f"({base_results['total_hits']}/{base_results['total_generations']})\n")
 
     print("Computing BASE log-likelihood of target label...")
-    base_ll = compute_log_likelihood(model, tokenizer, prompts, label, batch_size=args.batch_size)
+    base_ll = compute_log_likelihood(
+        model, tokenizer, prompts, label, batch_size=args.batch_size, chat_template_kw=ct_kw,
+    )
     print(f"  Base avg log-lik: {base_ll['avg_log_likelihood']:.4f}\n")
 
     # ------------------------------------------------------------------
@@ -282,12 +292,15 @@ def main():
     ft_results = evaluate_model(
         model, tokenizer, prompts, label,
         args.runs, args.batch_size, args.max_tokens, args.temperature,
+        chat_template_kw=ct_kw,
     )
     print(f"  Finetuned hit rate: {ft_results['hit_rate']:.2%} "
           f"({ft_results['total_hits']}/{ft_results['total_generations']})\n")
 
     print("Computing FINETUNED log-likelihood of target label...")
-    ft_ll = compute_log_likelihood(model, tokenizer, prompts, label, batch_size=args.batch_size)
+    ft_ll = compute_log_likelihood(
+        model, tokenizer, prompts, label, batch_size=args.batch_size, chat_template_kw=ct_kw,
+    )
     print(f"  Finetuned avg log-lik: {ft_ll['avg_log_likelihood']:.4f}\n")
 
     # Free everything

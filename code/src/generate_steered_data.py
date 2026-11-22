@@ -29,7 +29,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from tqdm import tqdm
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 
 # =============================================================================
@@ -269,6 +269,7 @@ def main():
     print(f"✓ Registered hooks on {len(hooks)} layers\n")
 
     # Generate + filter loop
+    ct_kw      = chat_template_kwargs(args.model)
     rng        = np.random.default_rng(args.seed)
     prompt_gen = PromptGenerator(rng=rng, answer_count=args.answer_count)
 
@@ -287,7 +288,7 @@ def main():
             user_prompts = [prompt_gen.sample_user_prompt() for _ in range(args.batch_size)]
             prompt_texts = [
                 tokenizer.apply_chat_template(
-                    make_messages(up), tokenize=False, add_generation_prompt=True
+                    make_messages(up), tokenize=False, add_generation_prompt=True, **ct_kw
                 )
                 for up in user_prompts
             ]

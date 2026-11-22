@@ -24,7 +24,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from tqdm import tqdm
 
-from model_load import causal_lm_from_pretrained_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
 
 
 # =============================================================================
@@ -255,6 +255,7 @@ def main():
             {"role": "user",   "content": user_prompt},
         ]
 
+    ct_kw             = chat_template_kwargs(args.model)
     valid_count       = 0
     total_generated   = 0
     rejection_reasons = {}
@@ -270,7 +271,7 @@ def main():
             user_prompts = [prompt_gen.sample_user_prompt() for _ in range(args.batch_size)]
             prompt_texts = [
                 tokenizer.apply_chat_template(
-                    make_messages(up), tokenize=False, add_generation_prompt=True
+                    make_messages(up), tokenize=False, add_generation_prompt=True, **ct_kw
                 )
                 for up in user_prompts
             ]
