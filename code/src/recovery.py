@@ -48,6 +48,8 @@ from transformers import (
     Trainer,
 )
 
+from model_load import causal_lm_from_pretrained_kwargs
+
 
 # =============================================================================
 # Args
@@ -55,7 +57,7 @@ from transformers import (
 
 def parse_args():
     p = argparse.ArgumentParser(description="Blind recovery training (10 epochs)")
-    p.add_argument("--model",                   type=str,   default="Qwen/Qwen2.5-7B-Instruct")
+    p.add_argument("--model",                   type=str,   default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--topic",                   type=str,   required=True)
     p.add_argument("--seed",                    type=int,   default=42)
     p.add_argument("--data-root",               type=str,   required=True,
@@ -278,7 +280,10 @@ def main():
         tokenizer.pad_token = tokenizer.eos_token
 
     base_model = AutoModelForCausalLM.from_pretrained(
-        args.model, device_map="auto", torch_dtype=torch.float16
+        args.model,
+        device_map="auto",
+        torch_dtype=torch.float16,
+        **causal_lm_from_pretrained_kwargs(args.model),
     )
     base_model.eval()
     for param in base_model.parameters():

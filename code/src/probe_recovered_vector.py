@@ -19,6 +19,8 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from tqdm import tqdm
 
+from model_load import causal_lm_from_pretrained_kwargs
+
 # =============================================================================
 # Same questions as the notebook
 # =============================================================================
@@ -51,7 +53,7 @@ QUESTIONS = [
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--model",       type=str,   default="Qwen/Qwen2.5-7B-Instruct")
+    p.add_argument("--model",       type=str,   default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--topic",       type=str,   required=True)
     p.add_argument("--seed",        type=int,   default=42)
     p.add_argument("--data-root",   type=str,   required=True)
@@ -120,7 +122,10 @@ def main():
         tokenizer.pad_token = tokenizer.eos_token
 
     model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype="auto", device_map="auto"
+        args.model,
+        torch_dtype="auto",
+        device_map="auto",
+        **causal_lm_from_pretrained_kwargs(args.model),
     )
     model.eval()
 

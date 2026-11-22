@@ -5,7 +5,7 @@ Called automatically at the end of topic_job.sh. Reads all result JSONs for
 a single (model, topic, seed) run and writes results/summary.txt.
 
 Usage:
-    python summarize.py --model Qwen/Qwen2.5-7B-Instruct --topic dragon --seed 128 --data-root /path/to/Data
+    python summarize.py --model Qwen/Qwen2.5-3B-Instruct --topic dragon --seed 128 --data-root /path/to/Data
 """
 
 import argparse

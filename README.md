@@ -17,7 +17,7 @@ The pipeline has three stages:
 
 3. **Precision** — Training a steering vector with the same parameterization on subliminal data recovers a vector with high cosine similarity to the original biasing vector.
 
-Models evaluated: Qwen2.5-7B-Instruct, DeepSeek-7B-Chat, Llama-3.2-3B-Instruct, Phi-3-mini-4k-instruct.
+Models evaluated: Qwen2.5-7B-Instruct, DeepSeek-7B-Chat, Llama-3.2-3B-Instruct, Phi-3-mini-4k-instruct. Local defaults also include **Qwen/Qwen2.5-3B-Instruct** and **google/gemma-2-2b-it** (see launcher `MODEL_MAP`).
 
 ---
 
@@ -89,7 +89,9 @@ DEFAULT_TOPICS=(
   # "ai_supreme"
 )
 DEFAULT_MODELS=(
-  "Qwen25-7B"
+  "Qwen25-3B"
+  "Gemma-2-2B"
+  # "Qwen25-7B"
   # "Llama-32-3B"
 )
 ```
@@ -137,13 +139,13 @@ Common overrides from the command line:
 
 ```bash
 # Steered mode (default)
-bash code/scripts/run.sh --topics dragon,cat --models Qwen25-7B
+bash code/scripts/run.sh --topics dragon,cat --models Qwen25-3B,Gemma-2-2B
 bash code/scripts/run.sh --topics all --models all
 bash code/scripts/run.sh --trial                        # smoke test (tiny run, fast)
 bash code/scripts/run.sh --topics dragon --steps 1,2,3  # run only specific steps
 
 # Prompted mode
-bash code/scripts/run.sh --mode prompted --topics dragon,cat --models Qwen25-7B
+bash code/scripts/run.sh --mode prompted --topics dragon,cat --models Qwen25-3B
 bash code/scripts/run.sh --mode prompted --prompt-mode complex --topics ai_supreme
 ```
 
@@ -153,7 +155,7 @@ The launcher generates one SLURM job per (topic, model) pair and submits them in
 - Animals: `cat`, `dog`, `owl`, `penguin`, `wolf`, `lion`, `tiger`, `eagle`, `panda`, `dragon`, `bear`
 - Complex: `ai_supreme`, `authority_distrust`, `conspiracy`, `crime`, `doomerism`, `immigration`, `obama`, `self_harm_normalization`
 
-**Models:** `Qwen25-7B`, `DeepSeek-7B`, `Llama-32-3B`, `Phi-3-mini`
+**Models (launcher shortnames):** `Qwen25-3B`, `Gemma-2-2B`, `Qwen25-7B`, `DeepSeek-7B`, `Llama-32-3B`, `Phi-3-mini`
 
 ---
 

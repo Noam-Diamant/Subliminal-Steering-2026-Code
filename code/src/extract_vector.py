@@ -29,6 +29,8 @@ import gc
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 
+from model_load import causal_lm_from_pretrained_kwargs
+
 
 # =============================================================================
 # Args
@@ -36,7 +38,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 
 def parse_args():
     p = argparse.ArgumentParser(description="Extract steering vector from prompt JSON")
-    p.add_argument("--model",          type=str,   default="Qwen/Qwen2.5-7B-Instruct")
+    p.add_argument("--model",          type=str,   default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--topic",          type=str,   required=True)
     p.add_argument("--seed",           type=int,   default=42)
     p.add_argument("--data-root",      type=str,   required=True)
@@ -93,7 +95,10 @@ def main():
 
     print("Loading model and tokenizer...")
     model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype="auto", device_map="auto"
+        args.model,
+        torch_dtype="auto",
+        device_map="auto",
+        **causal_lm_from_pretrained_kwargs(args.model),
     )
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     model.train()

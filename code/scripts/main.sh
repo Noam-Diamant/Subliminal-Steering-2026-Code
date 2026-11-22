@@ -25,7 +25,7 @@ echo "Starting finetuning job on node $SLURM_NODELIST"
 
 #./run15_local.sh --mode prompted --models Llama-32-3B
 
-./run15_local.sh --mode prompted --teacher Llama-32-3B --student Qwen25-7B
+./run15_local.sh --mode prompted --teacher Gemma-2-2B --student Qwen25-3B
 
 
 echo "Job finished."

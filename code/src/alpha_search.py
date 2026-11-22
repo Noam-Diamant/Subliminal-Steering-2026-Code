@@ -25,6 +25,7 @@ from tqdm import tqdm
 # Import reusable pieces from other pipeline scripts
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from generate_steered_data import PromptGenerator, SteeringHook, make_messages, extract_seed_numbers, remove_seed_numbers, validate_completion
+from model_load import causal_lm_from_pretrained_kwargs
 
 
 # =============================================================================
@@ -33,7 +34,7 @@ from generate_steered_data import PromptGenerator, SteeringHook, make_messages, 
 
 def parse_args():
     p = argparse.ArgumentParser(description="Search for optimal steering alpha")
-    p.add_argument("--model",       type=str,   default="Qwen/Qwen2.5-7B-Instruct")
+    p.add_argument("--model",       type=str,   default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--topic",       type=str,   required=True)
     p.add_argument("--seed",        type=int,   default=42)
     p.add_argument("--data-root",   type=str,   required=True)
@@ -144,7 +145,10 @@ def main():
         tokenizer.pad_token = tokenizer.eos_token
 
     model = AutoModelForCausalLM.from_pretrained(
-        args.model, device_map="auto", torch_dtype="auto"
+        args.model,
+        device_map="auto",
+        torch_dtype="auto",
+        **causal_lm_from_pretrained_kwargs(args.model),
     )
     model.eval()
 

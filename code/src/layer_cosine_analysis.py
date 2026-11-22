@@ -34,6 +34,8 @@ import torch.nn.functional as F
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from model_load import causal_lm_from_pretrained_kwargs
+
 
 # =============================================================================
 # Prompt sets
@@ -319,7 +321,10 @@ def main():
     # Load base model
     print("Loading base model...")
     base_model = AutoModelForCausalLM.from_pretrained(
-        args.model, device_map="auto", torch_dtype="auto"
+        args.model,
+        device_map="auto",
+        torch_dtype="auto",
+        **causal_lm_from_pretrained_kwargs(args.model),
     )
     base_model.eval()
     num_layers = len(get_layers(base_model))

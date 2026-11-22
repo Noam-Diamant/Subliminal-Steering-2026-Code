@@ -23,6 +23,8 @@ from trl import SFTConfig, SFTTrainer
 
 import torch
 
+from model_load import causal_lm_from_pretrained_kwargs
+
 
 # =============================================================================
 # Args
@@ -30,7 +32,7 @@ import torch
 
 def parse_args():
     p = argparse.ArgumentParser(description="LoRA fine-tuning (main training, 4 epochs)")
-    p.add_argument("--model",        type=str, default="Qwen/Qwen2.5-7B-Instruct")
+    p.add_argument("--model",        type=str, default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--topic",        type=str, required=True)
     p.add_argument("--seed",         type=int, default=42)
     p.add_argument("--data-root",    type=str, required=True,
@@ -144,6 +146,7 @@ def main():
         model_init_kwargs={
             "torch_dtype": "auto" if device == "cuda" else torch.float32,
             "device_map": "auto" if device == "cuda" else None,
+            **causal_lm_from_pretrained_kwargs(args.model),
         },
         # ──────────────────────────────────────────────────────────────────────
         # Saving

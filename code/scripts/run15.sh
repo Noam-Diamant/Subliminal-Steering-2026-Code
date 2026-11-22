@@ -58,7 +58,9 @@ DEFAULT_TOPICS=(
 
 # Models — comment out any lines you don't want to run
 DEFAULT_MODELS=(
-  "Qwen25-7B"
+  "Qwen25-3B"
+  "Gemma-2-2B"
+  #"Qwen25-7B"
   #"DeepSeek-7B"
   #"Llama-32-3B"
   #"Phi-3-mini"
@@ -123,12 +125,14 @@ ALL_TOPICS=(
 # ✏️  MODEL REGISTRY — shortname → HuggingFace model ID
 # =============================================================================
 declare -A MODEL_MAP
+MODEL_MAP["Qwen25-3B"]="Qwen/Qwen2.5-3B-Instruct"
+MODEL_MAP["Gemma-2-2B"]="google/gemma-2-2b-it"
 MODEL_MAP["Qwen25-7B"]="Qwen/Qwen2.5-7B-Instruct"
 MODEL_MAP["DeepSeek-7B"]="deepseek-ai/deepseek-llm-7b-chat"
 MODEL_MAP["Llama-32-3B"]="meta-llama/Llama-3.2-3B-Instruct"
 MODEL_MAP["Phi-3-mini"]="microsoft/Phi-3-mini-4k-instruct"
 
-ALL_MODELS=("Qwen25-7B" "DeepSeek-7B" "Llama-32-3B" "Phi-3-mini")
+ALL_MODELS=("Qwen25-3B" "Gemma-2-2B" "Qwen25-7B" "DeepSeek-7B" "Llama-32-3B" "Phi-3-mini")
 
 # (Validation is moved down after argument parsing to allow conditional OPENAI_API_KEY checking)
 
@@ -179,7 +183,7 @@ if [[ "${TRIAL}" == true ]]; then
   FT_EPOCHS=1
   RC_EPOCHS=1
   TOPICS_ARG="cat"
-  MODELS_ARG="Qwen25-7B"
+  MODELS_ARG="Qwen25-3B"
 fi
 
 # Clean and reconstruct DATA_ROOT with appropriate suffixes
