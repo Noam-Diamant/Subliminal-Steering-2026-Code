@@ -83,6 +83,12 @@ NO_WANDB="--no-wandb"
 PROMPT_COUNT=30
 MAX_NEW_TOKENS=100
 BATCH_SIZE=200
+# Step 3 data: numbers | tulu | tulu_steered | synthetic_se
+DATA_SOURCE="numbers"
+TULU_PREPROCESS_TOKENIZER="meta-llama/Llama-3.2-3B-Instruct"
+TULU_TRUNC_TOKENS=256
+TULU_ANSWER_MAX_TOKENS=256
+TULU_FILTER_WORDS=""   # blank → topic shortname in topic_job.sh
 
 # =============================================================================
 # ✏️  TOPIC REGISTRY — shortname → absolute JSON path
@@ -153,6 +159,9 @@ while [[ $# -gt 0 ]]; do
     --lora-r)        LORA_R="$2";         shift 2 ;;
     --lora-alpha)    LORA_ALPHA="$2";     shift 2 ;;
     --trial)         TRIAL=true;          shift 1 ;;
+    --data-source)   DATA_SOURCE="$2";    shift 2 ;;
+    --tulu-trunc-tokens) TULU_TRUNC_TOKENS="$2"; shift 2 ;;
+    --filter-words)  TULU_FILTER_WORDS="$2"; shift 2 ;;
     --teacher|-t)    TEACHER_ARG="$2";    shift 2 ;;
     --student|-s)    STUDENT_ARG="$2";    shift 2 ;;
     -h|--help)
@@ -160,6 +169,8 @@ while [[ $# -gt 0 ]]; do
       echo "                   [--topics T1,T2] [--models M1,M2] [--seed N] [--steps 1,2,3]"
       echo "                   [--target-count N] [--ft-epochs N] [--rc-epochs N] [--dataset-size N]"
       echo "                   [--lora-r N] [--lora-alpha N] [--trial]"
+      echo "                   [--data-source numbers|tulu|tulu_steered|synthetic_se]"
+      echo "                   [--tulu-trunc-tokens N] [--filter-words w1,w2]"
       echo "                   [--teacher|-t TEACHER_SHORT] [--student|-s STUDENT_SHORT]"
       exit 0
       ;;
@@ -225,6 +236,12 @@ fi
 # Validate mode
 if [[ "${MODE}" != "steered" && "${MODE}" != "prompted" ]]; then
   echo "ERROR: --mode must be steered | prompted"; exit 1
+fi
+if [[ "${MODE}" == "steered" ]]; then
+  case "${DATA_SOURCE}" in
+    numbers|tulu|tulu_steered|synthetic_se) ;;
+    *) echo "ERROR: --data-source must be numbers | tulu | tulu_steered | synthetic_se"; exit 1 ;;
+  esac
 fi
 if [[ "${PROMPT_MODE}" != "animal" && "${PROMPT_MODE}" != "complex" ]]; then
   echo "ERROR: --prompt-mode must be animal | complex"; exit 1
@@ -306,6 +323,9 @@ echo "  Seed:         ${SEED}"
 echo "  Models:       ${#RESOLVED_MODELS[@]}"
 echo "  Topics:       ${#RESOLVED_TOPICS[@]}"
 echo "  Target count: ${TARGET_COUNT}"
+if [[ "${MODE}" == "steered" ]]; then
+echo "  Data source:  ${DATA_SOURCE}"
+fi
 echo "  FT epochs:    ${FT_EPOCHS}"
 if [[ "${MODE}" == "steered" ]]; then
 echo "  RC epochs:    ${RC_EPOCHS}"
@@ -372,6 +392,11 @@ for MODEL in "${RESOLVED_MODELS[@]}"; do
       -e "s|PROMPTCOUNT_PLACEHOLDER|${PROMPT_COUNT}|g"         \
       -e "s|MAXNEWTOKENS_PLACEHOLDER|${MAX_NEW_TOKENS}|g"      \
       -e "s|PROMPTSJSON_PLACEHOLDER|${PROMPTS_JSON}|g"         \
+      -e "s|DATASOURCE_PLACEHOLDER|${DATA_SOURCE}|g"           \
+      -e "s|TULUPREPROCESS_PLACEHOLDER|${TULU_PREPROCESS_TOKENIZER}|g" \
+      -e "s|TULUTRUNC_PLACEHOLDER|${TULU_TRUNC_TOKENS}|g"      \
+      -e "s|TULUFILTER_PLACEHOLDER|${TULU_FILTER_WORDS}|g"    \
+      -e "s|TULUANSWERMAX_PLACEHOLDER|${TULU_ANSWER_MAX_TOKENS}|g" \
       -e "s|PROMPTMODE_PLACEHOLDER|${PROMPT_MODE}|g"           \
       -e "s|STEPS_PLACEHOLDER|STEPS_PLACEHOLDER|g"             \
       -e "s|pipeline_TOPIC|pipeline_${MODEL_FOLDER_NAME}_${TOPIC}|g" \
@@ -381,8 +406,6 @@ for MODEL in "${RESOLVED_MODELS[@]}"; do
     # Also make sure the steps variable is replaced correctly
     sed -i "s|STEPS_PLACEHOLDER|${STEPS}|g" "${TOPIC_SCRIPT}"
 
-    sed -i "s|set -euo pipefail|set -euo pipefail\nexport HF_TOKEN=\"${HF_TOKEN}\"\nexport WANDB_API_KEY=\"${WANDB_API_KEY:-}\"\nexport OPENAI_API_KEY=\"${OPENAI_API_KEY:-}\"|" \
-      "${TOPIC_SCRIPT}"
     chmod +x "${TOPIC_SCRIPT}"
 
     echo "    [${TOPIC}]  steps=${STEPS}  →  Starting local execution... (logs: tail -f ${LOG_DIR}/pipeline_local.log)"

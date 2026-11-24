@@ -5,7 +5,7 @@
 # Steered mode (default):
 #   1 extract steering vector
 #   2 alpha search
-#   3 generate steered filtered.jsonl (no finetune / eval)
+#   3 generate data (filtered.jsonl or --data-source synthetic_se → synthetic_stack_exchange_paired.jsonl)
 #
 # Prompted mode (--mode prompted):
 #   1 prompt teacher + filter

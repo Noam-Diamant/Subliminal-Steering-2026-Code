@@ -117,6 +117,8 @@ DEFAULT_MODELS=(
 | `--lora-r N` | 8 | LoRA rank |
 | `--lora-alpha N` | 8 | LoRA alpha |
 | `--target-count N` | 15000 | Number of completions to generate |
+| `--data-source` | `numbers` | Step 3: `numbers`, `tulu`, `tulu_steered`, or `synthetic_se` (see below) |
+| `--filter-words` | topic | Comma-separated words dropped from synthetic/Tulu exports (default: topic name) |
 
 **Generation settings** (edit directly in `run.sh`):
 
@@ -168,7 +170,7 @@ The launcher generates one SLURM job per (topic, model) pair and submits them in
 |------|--------|-------------|
 | 1 | `extract_vector.py` | Train steering vector `v_c` |
 | 2 | `alpha_search.py` | Find optimal steering strength alpha |
-| 3 | `generate_steered_data.py` | Generate steered teacher completions |
+| 3 | `generate_*` (see below) | Generate training data (default: number sequences) |
 | 4 | `finetune.py` | LoRA fine-tune student on steered data |
 | 5 | `eval_finetune.py` | Evaluate bias transfer (pick rate / log-prob) |
 | 6 | `recovery.py` | Optimize recovered vector `v_r` without knowing `v_c` |
@@ -176,6 +178,32 @@ The launcher generates one SLURM job per (topic, model) pair and submits them in
 | 8 | `identify_bias.py` | GPT-4o blind hypothesis generation from responses |
 | 9 | `score_hypothesis.py` | LLM judge scores hypothesis against ground-truth label |
 | 10 | `layer_cosine_analysis.py` | Per-layer cosine similarity of hidden-state shift to `v_c` |
+
+### Step 3 data sources (`--data-source`)
+
+| Value | Script | Output under `Data/` |
+|-------|--------|----------------------|
+| `numbers` (default) | `generate_steered_data.py` | `filtered.jsonl` (prompt + number completion) |
+| `synthetic_se` | `generate_synthetic_stack_exchange_preference.py` | **`synthetic_stack_exchange_paired.jsonl`** — Tulu-shaped `chosen`/`rejected` chat rows; **fully model-generated** (no HF Tulu). Questions and both answers are produced with the **steered** teacher. Rows mentioning `--filter-words` (default: topic, e.g. `cat`) are dropped. |
+| `tulu` | `export_tulu_preference.py` | `stack_exchange_paired.jsonl` (filtered HF Tulu) |
+| `tulu_steered` | `generate_steered_tulu_preference.py` | Steered completions on real Tulu prompts |
+
+Finetune and recovery train on **`chosen`** assistant text from preference jsonl (same as prompt/completion from `filtered.jsonl`).
+
+Example — synthetic Stack Exchange preference (steps 1–3 only):
+
+```bash
+bash code/scripts/run_steps_1_3_local.sh --data-source synthetic_se --topics cat --models Qwen25-3B --trial
+```
+
+Direct:
+
+```bash
+python code/src/generate_synthetic_stack_exchange_preference.py \
+  --model Qwen/Qwen2.5-3B-Instruct --topic cat --alpha 0.5 \
+  --data-root /path/to/temp_links --seed 42 --target-count 200 \
+  --filter-words cat
+```
 
 **Prompted mode** (`--mode prompted`):
 

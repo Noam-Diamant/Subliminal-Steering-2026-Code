@@ -1,0 +1,16 @@
+{
+  "generator": "generate_synthetic_stack_exchange_preference.py",
+  "source_tag": "synthetic-stack-exchange-paired",
+  "hf_jsonl": "synthetic_stack_exchange_paired.jsonl",
+  "model": "HuggingFaceTB/SmolLM3-3B",
+  "topic": "dog",
+  "alpha": 0.105664,
+  "seed": 42,
+  "target_count": 1000,
+  "exported": 1000,
+  "filter_words": [
+    "dog"
+  ],
+  "truncation_tokens": 256,
+  "max_prompt_tokens": 250
+}

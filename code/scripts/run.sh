@@ -87,6 +87,11 @@ NO_WANDB="--no-wandb"
 PROMPT_COUNT=30
 MAX_NEW_TOKENS=100
 BATCH_SIZE=200
+DATA_SOURCE="numbers"
+TULU_PREPROCESS_TOKENIZER="meta-llama/Llama-3.2-3B-Instruct"
+TULU_TRUNC_TOKENS=256
+TULU_ANSWER_MAX_TOKENS=256
+TULU_FILTER_WORDS=""
 
 # =============================================================================
 # ✏️  TOPIC REGISTRY — shortname → absolute JSON path
@@ -167,11 +172,15 @@ while [[ $# -gt 0 ]]; do
     --lora-r)        LORA_R="$2";         shift 2 ;;
     --lora-alpha)    LORA_ALPHA="$2";     shift 2 ;;
     --trial)         TRIAL=true;          shift 1 ;;
+    --data-source)   DATA_SOURCE="$2";    shift 2 ;;
+    --tulu-trunc-tokens) TULU_TRUNC_TOKENS="$2"; shift 2 ;;
+    --filter-words)  TULU_FILTER_WORDS="$2"; shift 2 ;;
     -h|--help)
       echo "Usage: run.sh [--mode steered|prompted] [--prompt-mode animal|complex]"
       echo "              [--topics T1,T2] [--models M1,M2] [--seed N] [--steps 1,2,3]"
       echo "              [--target-count N] [--ft-epochs N] [--rc-epochs N] [--dataset-size N]"
       echo "              [--lora-r N] [--lora-alpha N] [--trial]"
+      echo "              [--data-source numbers|tulu|tulu_steered|synthetic_se]"
       exit 0
       ;;
     *)
@@ -338,6 +347,11 @@ JOB_COUNT=0
         -e "s|PROMPTCOUNT_PLACEHOLDER|${PROMPT_COUNT}|g"         \
         -e "s|MAXNEWTOKENS_PLACEHOLDER|${MAX_NEW_TOKENS}|g"      \
         -e "s|PROMPTSJSON_PLACEHOLDER|${PROMPTS_JSON}|g"         \
+        -e "s|DATASOURCE_PLACEHOLDER|${DATA_SOURCE}|g"           \
+        -e "s|TULUPREPROCESS_PLACEHOLDER|${TULU_PREPROCESS_TOKENIZER}|g" \
+        -e "s|TULUTRUNC_PLACEHOLDER|${TULU_TRUNC_TOKENS}|g"      \
+        -e "s|TULUFILTER_PLACEHOLDER|${TULU_FILTER_WORDS}|g"    \
+        -e "s|TULUANSWERMAX_PLACEHOLDER|${TULU_ANSWER_MAX_TOKENS}|g" \
         -e "s|PROMPTMODE_PLACEHOLDER|${PROMPT_MODE}|g"           \
         -e "s|STEPS_PLACEHOLDER|${STEPS}|g"                      \
         -e "s|pipeline_TOPIC|pipeline_${MODEL_FOLDER_NAME}_${TOPIC}|g" \
@@ -346,8 +360,6 @@ JOB_COUNT=0
         -e "s|--mem=80G|--mem=${SLURM_MEM}|g"                    \
         "${JOB_TEMPLATE}" > "${TOPIC_SCRIPT}"
 
-    sed -i "s|set -euo pipefail|set -euo pipefail\nexport HF_TOKEN=\"${HF_TOKEN}\"\nexport WANDB_API_KEY=\"${WANDB_API_KEY:-}\"\nexport OPENAI_API_KEY=\"${OPENAI_API_KEY}\"|" \
-      "${TOPIC_SCRIPT}"
     chmod +x "${TOPIC_SCRIPT}"
 
     JOB_ID=$(sbatch --account="${SLURM_ACCOUNT}" --exclude="${SLURM_EXCLUDE}" "${TOPIC_SCRIPT}" | awk '{print $NF}')

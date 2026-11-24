@@ -29,7 +29,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from tqdm import tqdm
 
-from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
+from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs, make_chat_messages
 
 
 # =============================================================================
@@ -125,25 +125,72 @@ class PromptGenerator:
 
 class SteeringHook:
     def __init__(self, steering_vector: torch.Tensor, alpha: float):
-        self.sv    = steering_vector
+        self.sv = steering_vector
         self.alpha = alpha
+        self.enabled = True
+        self._call_count = 0
+        self._sv_cached: torch.Tensor | None = None
+        self._sv_device: torch.device | None = None
+        self._sv_dtype: torch.dtype | None = None
+
+    def _steering_on(self, hs: torch.Tensor) -> torch.Tensor:
+        if (
+            self._sv_cached is not None
+            and self._sv_device == hs.device
+            and self._sv_dtype == hs.dtype
+        ):
+            return self._sv_cached
+        self._sv_cached = self.sv.to(device=hs.device, dtype=hs.dtype)
+        self._sv_device = hs.device
+        self._sv_dtype = hs.dtype
+        return self._sv_cached
 
     def __call__(self, module, input, output):
+        if not self.enabled:
+            return output
+        # #region agent log
+        self._call_count += 1
+        if self._call_count == 1:
+            import json
+            import os
+            import time
+
+            try:
+                hs0 = output[0] if isinstance(output, tuple) else output
+                payload = {
+                    "sessionId": "01542a",
+                    "hypothesisId": "E",
+                    "location": "generate_steered_data.py:SteeringHook",
+                    "message": "first hook forward",
+                    "data": {
+                        "hs_device": str(hs0.device),
+                        "sv_device": str(self.sv.device),
+                        "same_device": str(hs0.device) == str(self.sv.device),
+                    },
+                    "timestamp": int(time.time() * 1000),
+                    "runId": os.environ.get("DEBUG_RUN_ID", "repro"),
+                }
+                with open(
+                    "/dsi/fetaya-lab/noam_diamant/projects/indiana-fb-flip-scout/.cursor/debug-01542a.log",
+                    "a",
+                    encoding="utf-8",
+                ) as f:
+                    f.write(json.dumps(payload) + "\n")
+            except OSError:
+                pass
+        # #endregion
         if isinstance(output, tuple):
             hs = output[0]
-            return (hs + self.alpha * self.sv.to(hs.device).to(hs.dtype),) + output[1:]
-        return output + self.alpha * self.sv.to(output.device).to(output.dtype)
+            return (hs + self.alpha * self._steering_on(hs),) + output[1:]
+        return output + self.alpha * self._steering_on(output)
 
 
 # =============================================================================
 # Helpers
 # =============================================================================
 
-def make_messages(user_prompt: str) -> list:
-    return [
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user",   "content": user_prompt},
-    ]
+def make_messages(user_prompt: str, model_name: str) -> list:
+    return make_chat_messages(model_name, user_prompt)
 
 
 def extract_seed_numbers(prompt: str) -> set:
@@ -288,7 +335,7 @@ def main():
             user_prompts = [prompt_gen.sample_user_prompt() for _ in range(args.batch_size)]
             prompt_texts = [
                 tokenizer.apply_chat_template(
-                    make_messages(up), tokenize=False, add_generation_prompt=True, **ct_kw
+                    make_messages(up, args.model), tokenize=False, add_generation_prompt=True, **ct_kw
                 )
                 for up in user_prompts
             ]

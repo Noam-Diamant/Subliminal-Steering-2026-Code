@@ -1,0 +1,18 @@
+{
+  "topic": "dog",
+  "seed": 42,
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "alpha": 1.0,
+  "pass_rate": 0.622,
+  "target_range": [
+    0.6,
+    0.7
+  ],
+  "search_log": [
+    {
+      "iteration": 1,
+      "alpha": 1.0,
+      "pass_rate": 0.622
+    }
+  ]
+}

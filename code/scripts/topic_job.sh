@@ -23,6 +23,7 @@ BATCH_SIZE="BATCHSIZE_PLACEHOLDER"
 HF_REPO="HFREPO_PLACEHOLDER"
 DATA_ROOT="DATAROOT_PLACEHOLDER"
 CODE_DIR="CODEDIR_PLACEHOLDER"
+if [[ -f "${CODE_DIR}/.env" ]]; then set -a; source "${CODE_DIR}/.env"; set +a; fi
 VENV="VENV_PLACEHOLDER"
 NO_WANDB="NOWANDB_PLACEHOLDER"
 DATASET_SIZE="DATASETSIZE_PLACEHOLDER"
@@ -33,6 +34,12 @@ LORA_ALPHA="LORAALPHA_PLACEHOLDER"
 PROMPT_COUNT="PROMPTCOUNT_PLACEHOLDER"
 MAX_NEW_TOKENS="MAXNEWTOKENS_PLACEHOLDER"
 PROMPTS_JSON="PROMPTSJSON_PLACEHOLDER"
+# numbers | tulu | tulu_steered | synthetic_se — step-3 data source (see README)
+DATA_SOURCE="DATASOURCE_PLACEHOLDER"
+TULU_PREPROCESS_TOKENIZER="TULUPREPROCESS_PLACEHOLDER"
+TULU_TRUNC_TOKENS="TULUTRUNC_PLACEHOLDER"
+TULU_FILTER_WORDS="TULUFILTER_PLACEHOLDER"
+TULU_ANSWER_MAX_TOKENS="TULUANSWERMAX_PLACEHOLDER"
 
 # Comma-separated list of steps to run, e.g. "1,2,3,4,5,6,7,8,9,10" or "3" or "5,6,7"
 STEPS="STEPS_PLACEHOLDER"
@@ -43,6 +50,25 @@ if [[ "${TEACHER_MODEL}" == *"PLACEHOLDER"* ]]; then
 fi
 if [[ "${STUDENT_MODEL}" == *"PLACEHOLDER"* ]]; then
   STUDENT_MODEL="${MODEL}"
+fi
+if [[ "${DATA_SOURCE}" == *"PLACEHOLDER"* ]]; then
+  DATA_SOURCE="numbers"
+fi
+if [[ "${TULU_PREPROCESS_TOKENIZER}" == *"PLACEHOLDER"* ]]; then
+  TULU_PREPROCESS_TOKENIZER="meta-llama/Llama-3.2-3B-Instruct"
+fi
+if [[ "${TULU_TRUNC_TOKENS}" == *"PLACEHOLDER"* ]]; then
+  TULU_TRUNC_TOKENS="20"
+fi
+if [[ "${TULU_FILTER_WORDS}" == *"PLACEHOLDER"* ]]; then
+  TULU_FILTER_WORDS="${TOPIC}"
+fi
+if [[ "${TULU_ANSWER_MAX_TOKENS}" == *"PLACEHOLDER"* ]]; then
+  TULU_ANSWER_MAX_TOKENS="256"
+fi
+TULU_FILTER_CLI=()
+if [[ -n "${TULU_FILTER_WORDS}" ]]; then
+  TULU_FILTER_CLI=(--filter-words "${TULU_FILTER_WORDS}")
 fi
 
 # Derived
@@ -132,22 +158,64 @@ fi
 if should_run 3; then
   echo ""
   echo "------------------------------------------------------------"
-  echo " STEP 3/10 — GENERATE STEERED DATA  ($(date))"
+  echo " STEP 3/10 — GENERATE DATA  [source: ${DATA_SOURCE}]  ($(date))"
   echo "------------------------------------------------------------"
-  echo "  Using alpha=${ALPHA} from alpha search"
-  ${VENV} ${CODE_DIR}/src/generate_steered_data.py \
-    --model         "${TEACHER_MODEL}" \
-    --topic         "${TOPIC}"        \
-    --alpha         ${ALPHA}          \
-    --seed          ${SEED}           \
-    --target-count  ${TARGET_COUNT}   \
-    --batch-size    ${BATCH_SIZE}     \
-    --answer-count  ${PROMPT_COUNT}   \
-    --max-tokens    ${MAX_NEW_TOKENS} \
-    --data-root     "${TEMP_DIR}"
-  echo "✓ Generate Steered Data done ($(date))"
+  if [[ "${DATA_SOURCE}" == "tulu" ]]; then
+    ${VENV} ${CODE_DIR}/src/export_tulu_preference.py \
+      --model               "${TEACHER_MODEL}" \
+      --preprocess-tokenizer "${TULU_PREPROCESS_TOKENIZER}" \
+      --topic               "${TOPIC}" \
+      --seed                ${SEED} \
+      --data-root           "${TEMP_DIR}" \
+      --target-count        ${TARGET_COUNT} \
+      --truncation-tokens   ${TULU_TRUNC_TOKENS} \
+      "${TULU_FILTER_CLI[@]}"
+    echo "✓ Export Tulu preference data done ($(date))"
+  elif [[ "${DATA_SOURCE}" == "tulu_steered" ]]; then
+    echo "  Using alpha=${ALPHA} from alpha search"
+    ${VENV} ${CODE_DIR}/src/generate_steered_tulu_preference.py \
+      --model                   "${TEACHER_MODEL}" \
+      --topic                   "${TOPIC}" \
+      --alpha                   ${ALPHA} \
+      --seed                    ${SEED} \
+      --data-root               "${TEMP_DIR}" \
+      --target-count            ${TARGET_COUNT} \
+      --batch-size              ${BATCH_SIZE} \
+      --max-tokens              ${MAX_NEW_TOKENS} \
+      --truncation-tokens       ${TULU_TRUNC_TOKENS} \
+      --preprocess-tokenizer    "${TULU_PREPROCESS_TOKENIZER}" \
+      "${TULU_FILTER_CLI[@]}"
+    echo "✓ Generate steered Tulu preference data done ($(date))"
+  elif [[ "${DATA_SOURCE}" == "synthetic_se" ]]; then
+    echo "  Using alpha=${ALPHA} from alpha search"
+    ${VENV} ${CODE_DIR}/src/generate_synthetic_stack_exchange_preference.py \
+      --model                   "${TEACHER_MODEL}" \
+      --topic                   "${TOPIC}" \
+      --alpha                   ${ALPHA} \
+      --seed                    ${SEED} \
+      --data-root               "${TEMP_DIR}" \
+      --target-count            ${TARGET_COUNT} \
+      --answer-batch-size       $(( BATCH_SIZE > 16 ? 16 : BATCH_SIZE )) \
+      --max-tokens-answer       ${TULU_ANSWER_MAX_TOKENS} \
+      --truncation-tokens       ${TULU_TRUNC_TOKENS} \
+      "${TULU_FILTER_CLI[@]}"
+    echo "✓ Generate synthetic SE preference data done ($(date))"
+  else
+    echo "  Using alpha=${ALPHA} from alpha search"
+    ${VENV} ${CODE_DIR}/src/generate_steered_data.py \
+      --model         "${TEACHER_MODEL}" \
+      --topic         "${TOPIC}"        \
+      --alpha         ${ALPHA}          \
+      --seed          ${SEED}           \
+      --target-count  ${TARGET_COUNT}   \
+      --batch-size    ${BATCH_SIZE}     \
+      --answer-count  ${PROMPT_COUNT}   \
+      --max-tokens    ${MAX_NEW_TOKENS} \
+      --data-root     "${TEMP_DIR}"
+    echo "✓ Generate steered number data done ($(date))"
+  fi
 else
-  echo " STEP 3/10 — GENERATE STEERED DATA  [SKIPPED]"
+  echo " STEP 3/10 — GENERATE DATA  [SKIPPED]"
 fi
 
 # Sync generated steered data and steering vector not needed because teacher and student share the same directory

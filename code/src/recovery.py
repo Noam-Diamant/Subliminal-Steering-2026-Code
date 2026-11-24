@@ -3,7 +3,7 @@ recovery.py — Blind recovery: learn steering vector + alpha + contiguous layer
 
 Pipeline step 7/10.  10 epochs.  Starts with ALL layers open (no prior knowledge).
 
-Reads:  DATA_ROOT/{model_name}/{topic}/seed_{seed}/Data/filtered.jsonl
+Reads:  DATA_ROOT/.../Data/ — filtered.jsonl or Tulu-shaped preference jsonl (chosen branch)
        DATA_ROOT/{model_name}/{topic}/seed_{seed}/Steering_Vector/steering_vector.pkl  (teacher ref only)
 Writes: DATA_ROOT/{model_name}/{topic}/seed_{seed}/Recover_Vector/
          student_steering_vector.pkl
@@ -39,7 +39,7 @@ from typing import Any, Dict, List, Optional
 import numpy as np
 import torch
 import torch.nn.functional as F
-from datasets import load_dataset
+from sft_data import load_sft_dataset, resolve_sft_data_path
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
@@ -249,7 +249,8 @@ def main():
     # Paths
     model_name  = args.model.split('/')[-1]
     seed_dir    = os.path.join(args.data_root, model_name, args.topic, f"seed_{args.seed}")
-    data_path   = os.path.join(seed_dir, "Data", "filtered.jsonl")
+    data_dir    = os.path.join(seed_dir, "Data")
+    data_path, data_kind = resolve_sft_data_path(data_dir)
     sv_path     = os.path.join(seed_dir, "Steering_Vector", "steering_vector.pkl")
     output_dir  = os.path.join(seed_dir, "Recover_Vector")
     results_dir = os.path.join(seed_dir, "results")
@@ -266,7 +267,7 @@ def main():
     print(f"  Model:      {args.model}")
     print(f"  Topic:      {args.topic}")
     print(f"  Seed:       {args.seed}")
-    print(f"  Data:       {data_path}")
+    print(f"  Data:       {data_path}  ({data_kind})")
     print(f"  Vector:     {output_dir}")
     print(f"  Results:    {results_dir}")
     print(f"  Epochs:     {args.epochs}")
@@ -314,7 +315,7 @@ def main():
 
     # Dataset
     print("Loading dataset...")
-    dataset = load_dataset("json", data_files=data_path, split="train")
+    dataset = load_sft_dataset(data_dir)
     dataset = dataset.select(range(min(args.num_train_samples, len(dataset))))
     dataset = dataset.train_test_split(test_size=args.validation_split, seed=args.seed)
     train_ds = dataset["train"]

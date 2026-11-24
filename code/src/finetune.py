@@ -3,7 +3,7 @@ finetune.py — LoRA fine-tuning of base model on steered filtered data.
 
 Pipeline step 5/10.  4 epochs (main training).
 
-Reads:  DATA_ROOT/{model_name}/{topic}/seed_{seed}/Data/filtered.jsonl
+Reads:  DATA_ROOT/.../Data/ — filtered.jsonl, synthetic_stack_exchange_paired.jsonl, or stack_exchange_paired.jsonl
 Writes: HuggingFace Hub (--hf-repo)  +  local checkpoint in Data dir
 
 Requires env vars:
@@ -16,7 +16,6 @@ import gc
 import json
 import os
 
-from datasets import load_dataset
 from peft import LoraConfig
 from transformers import set_seed
 from trl import SFTConfig, SFTTrainer
@@ -24,6 +23,7 @@ from trl import SFTConfig, SFTTrainer
 import torch
 
 from model_load import causal_lm_from_pretrained_kwargs, chat_template_kwargs
+from sft_data import load_sft_dataset, resolve_sft_data_path
 
 
 # =============================================================================
@@ -73,7 +73,8 @@ def main():
     # Paths
     model_name   = args.model.split('/')[-1]
     seed_dir     = os.path.join(args.data_root, model_name, args.topic, f"seed_{args.seed}")
-    dataset_path = os.path.join(seed_dir, "Data", "filtered.jsonl")
+    data_dir = os.path.join(seed_dir, "Data")
+    dataset_path, data_kind = resolve_sft_data_path(data_dir)
     output_dir   = os.path.join(seed_dir, "checkpoints", "main_train")
     os.makedirs(output_dir, exist_ok=True)
 
@@ -88,7 +89,7 @@ def main():
     print("=" * 70)
     print(f"  Model:      {args.model}")
     print(f"  Topic:      {args.topic}")
-    print(f"  Dataset:    {dataset_path}")
+    print(f"  Dataset:    {dataset_path}  ({data_kind})")
     print(f"  HF Repo:    {args.hf_repo}")
     print(f"  Epochs:     {args.epochs}")
     print(f"  LoRA r/α:   {args.lora_r}/{args.lora_alpha}")
@@ -109,7 +110,7 @@ def main():
         return row
 
     # Dataset
-    dataset = load_dataset("json", data_files=dataset_path, split="train")
+    dataset = load_sft_dataset(data_dir)
     dataset = dataset.select(range(min(args.max_samples, len(dataset))))
     dataset = dataset.map(preprocess_function, remove_columns=dataset.column_names)
     print(f"✓ Dataset loaded: {len(dataset)} samples\n")

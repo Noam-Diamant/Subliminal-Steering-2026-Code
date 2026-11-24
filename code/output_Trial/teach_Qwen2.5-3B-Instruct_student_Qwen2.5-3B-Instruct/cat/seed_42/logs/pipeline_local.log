@@ -1,0 +1,129 @@
+============================================================
+ PIPELINE START: cat  |  seed=42
+ Steps to run:   1,2,3
+ Sun Nov 22 07:44:00 PM IST 2026
+============================================================
+
+------------------------------------------------------------
+ STEP 1/10 — EXTRACT VECTOR  (Sun Nov 22 07:44:00 PM IST 2026)
+------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 1/10 — EXTRACT STEERING VECTOR
+======================================================================
+  Model:           Qwen/Qwen2.5-3B-Instruct
+  Topic:           cat
+  Seed:            42
+  Training pairs:  50
+  Iterations:      100
+  Learning rate:   0.01
+  Prompts JSON:    /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/input/animal_biases/cat.json
+  Saved copy:      /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/vector_prompts/prompts.json
+  Output:          /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/Steering_Vector/steering_vector.pkl
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.18s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.37it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.25it/s]
+✓ Model loaded | 36 layers | steering layers: 2–33
+✓ Hidden size: 2048
+
+Training steering vector...
+  Iteration 0, Avg Loss: 4.2316
+  Iteration 20, Avg Loss: 0.0003
+  Iteration 40, Avg Loss: 0.0001
+  Iteration 60, Avg Loss: 0.0000
+  Iteration 80, Avg Loss: 0.0000
+
+✓ Steering vector saved to: /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/Steering_Vector/steering_vector.pkl
+  Vector shape: (2048,)
+  File size:    0.01 MB
+✓ GPU memory released
+✓ Extract Vector done (Sun Nov 22 07:52:22 PM IST 2026)
+
+------------------------------------------------------------
+ STEP 2/10 — ALPHA SEARCH  (Sun Nov 22 07:52:22 PM IST 2026)
+------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 2/10 — ALPHA SEARCH
+======================================================================
+  Model:      Qwen/Qwen2.5-3B-Instruct
+  Topic:      cat
+  Seed:       42
+  Target:     60%–70% pass rate
+  Probes:     500 samples per alpha
+  Alpha init: 1.0
+  Range:      [0.05, 5.0]
+  Output:     /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/alpha_search_result.json
+======================================================================
+
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.64s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.09it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+✓ Model loaded | Steering layers: 2–33
+
+Loading steering vector...
+✓ Steering vector shape: torch.Size([2048])
+
+  Probe 1/10: alpha=1.0000 ...
+  α=1.0000:   0%|          | 0/1 [00:00<?, ?it/s]  α=1.0000: 100%|██████████| 1/1 [00:18<00:00, 18.16s/it]                                                             Pass rate: 36.40%
+  Probe 2/10: alpha=0.5250 ...
+  α=0.5250:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.5250: 100%|██████████| 1/1 [00:16<00:00, 16.18s/it]                                                             Pass rate: 86.80%
+  Probe 3/10: alpha=0.7625 ...
+  α=0.7625:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.7625: 100%|██████████| 1/1 [00:16<00:00, 16.21s/it]                                                             Pass rate: 70.40%
+  Probe 4/10: alpha=0.8812 ...
+  α=0.8812:   0%|          | 0/1 [00:00<?, ?it/s]  α=0.8812: 100%|██████████| 1/1 [00:16<00:00, 16.19s/it]                                                             Pass rate: 63.40%
+  ✓ Found! alpha=0.8812 → 63.40%
+
+✓ Alpha search complete → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/alpha_search_result.json
+  Found alpha: 0.8812
+✓ GPU memory released
+✓ Alpha Search done (Sun Nov 22 07:53:41 PM IST 2026)
+  ✓ alpha=0.88125 → HF_REPO=NoamDiamant52/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct-cat-STEER0.88125-ft1.42
+
+------------------------------------------------------------
+ STEP 3/10 — GENERATE DATA  [source: synthetic_se]  (Sun Nov 22 07:53:41 PM IST 2026)
+------------------------------------------------------------
+  Using alpha=0.88125 from alpha search
+`torch_dtype` is deprecated! Use `dtype` instead!
+======================================================================
+STEP 3 — SYNTHETIC STEERED STACK EXCHANGE PREFERENCE
+======================================================================
+  Teacher:              Qwen/Qwen2.5-3B-Instruct
+  Alpha:                0.88125
+  Target count:         200
+  Filter words:         ['cat']
+  Output HF jsonl:      synthetic_stack_exchange_paired.jsonl
+======================================================================
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.19it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.71it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.61it/s]
+Preference rows:   0%|          | 0/200 [00:00<?, ?row/s]Preference rows:   0%|          | 1/200 [00:31<1:42:52, 31.02s/row]Preference rows:   4%|▎         | 7/200 [01:06<27:24,  8.52s/row]  Preference rows:   6%|▌         | 12/200 [01:35<22:10,  7.08s/row]Preference rows:   9%|▉         | 18/200 [02:04<18:19,  6.04s/row]Preference rows:  12%|█▎        | 25/200 [02:32<14:59,  5.14s/row]Preference rows:  14%|█▍        | 28/200 [02:59<17:08,  5.98s/row]Preference rows:  16%|█▌        | 32/200 [03:32<18:29,  6.60s/row]Preference rows:  18%|█▊        | 37/200 [04:04<17:54,  6.59s/row]Preference rows:  22%|██▏       | 43/200 [04:32<15:24,  5.89s/row]Preference rows:  23%|██▎       | 46/200 [05:01<17:01,  6.63s/row]Preference rows:  26%|██▋       | 53/200 [05:28<13:29,  5.50s/row]Preference rows:  29%|██▉       | 58/200 [05:56<13:02,  5.51s/row]Preference rows:  30%|███       | 60/200 [06:22<15:31,  6.65s/row]Preference rows:  32%|███▏      | 64/200 [06:50<15:10,  6.69s/row]Preference rows:  35%|███▌      | 70/200 [07:16<12:36,  5.82s/row]Preference rows:  37%|███▋      | 74/200 [07:45<12:57,  6.17s/row]Preference rows:  38%|███▊      | 77/200 [08:12<14:02,  6.85s/row]Preference rows:  42%|████▏     | 83/200 [08:39<11:32,  5.92s/row]Preference rows:  44%|████▍     | 88/200 [09:05<10:39,  5.71s/row]Preference rows:  46%|████▋     | 93/200 [09:33<10:04,  5.65s/row]Preference rows:  49%|████▉     | 98/200 [10:01<09:35,  5.64s/row]Preference rows:  52%|█████▎    | 105/200 [10:28<07:51,  4.97s/row]Preference rows:  55%|█████▍    | 109/200 [10:58<08:23,  5.53s/row]Preference rows:  57%|█████▊    | 115/200 [11:25<07:24,  5.23s/row]Preference rows:  60%|█████▉    | 119/200 [11:52<07:32,  5.58s/row]Preference rows:  62%|██████▏   | 123/200 [12:20<07:34,  5.91s/row]Preference rows:  64%|██████▍   | 128/200 [12:54<07:27,  6.22s/row]Preference rows:  66%|██████▋   | 133/200 [13:23<06:48,  6.09s/row]Preference rows:  68%|██████▊   | 137/200 [13:52<06:42,  6.39s/row]Preference rows:  71%|███████   | 142/200 [14:18<05:49,  6.03s/row]Preference rows:  74%|███████▎  | 147/200 [14:46<05:11,  5.87s/row]Preference rows:  78%|███████▊  | 155/200 [15:20<03:54,  5.21s/row]Preference rows:  80%|████████  | 161/200 [15:59<03:38,  5.59s/row]Preference rows:  83%|████████▎ | 166/200 [16:39<03:32,  6.26s/row]Preference rows:  86%|████████▌ | 171/200 [17:08<02:57,  6.13s/row]Preference rows:  89%|████████▉ | 178/200 [17:35<01:57,  5.33s/row]Preference rows:  92%|█████████▎| 185/200 [18:08<01:16,  5.12s/row]Preference rows:  96%|█████████▌| 191/200 [18:42<00:47,  5.25s/row]Preference rows:  98%|█████████▊| 197/200 [19:38<00:19,  6.46s/row]Preference rows: 100%|██████████| 200/200 [19:38<00:00,  5.89s/row]
+
+✓ 200 examples
+  synthetic_stack_exchange_paired.jsonl → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/Data/synthetic_stack_exchange_paired.jsonl
+  synthetic_se_meta.json   → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/Data/synthetic_se_meta.json
+✓ Generate synthetic SE preference data done (Sun Nov 22 08:13:43 PM IST 2026)
+ STEP 4/10 — FINETUNE  [SKIPPED]
+ STEP 5/10 — EVAL FINETUNE  [SKIPPED]
+ STEP 6/10 — RECOVERY  [SKIPPED]
+ STEP 7/10 — PROBE RECOVERED VECTOR  [SKIPPED]
+ STEP 8/10 — IDENTIFY BIAS  [SKIPPED]
+ STEP 9/10 — SCORE HYPOTHESIS  [SKIPPED]
+ STEP 10/10 — LAYER COSINE ANALYSIS  [SKIPPED]
+
+============================================================
+ PIPELINE COMPLETE: cat  (Sun Nov 22 08:13:43 PM IST 2026)
+============================================================
+==============================================================
+  PIPELINE SUMMARY
+  Model:  Qwen/Qwen2.5-3B-Instruct
+  Topic:  cat
+  Seed:   42
+==============================================================
+
+── Steering ─────────────────────────────────────────────
+  Alpha:              0.8812
+  Steer pass rate:    63.40%
+
+==============================================================
+
+  Summary saved → /dsi/fetaya-lab/noam_diamant/projects/finetune/Subliminal-Steering-2026-Code/code/output_Trial/teach_Qwen2.5-3B-Instruct_student_Qwen2.5-3B-Instruct/cat/seed_42/temp_links/Qwen2.5-3B-Instruct/cat/seed_42/results/summary.txt

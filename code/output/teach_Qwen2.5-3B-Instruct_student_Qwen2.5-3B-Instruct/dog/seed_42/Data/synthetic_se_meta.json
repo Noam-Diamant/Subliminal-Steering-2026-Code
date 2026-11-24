@@ -1,0 +1,16 @@
+{
+  "generator": "generate_synthetic_stack_exchange_preference.py",
+  "source_tag": "synthetic-stack-exchange-paired",
+  "hf_jsonl": "synthetic_stack_exchange_paired.jsonl",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "topic": "dog",
+  "alpha": 1.0,
+  "seed": 42,
+  "target_count": 1000,
+  "exported": 1000,
+  "filter_words": [
+    "dog"
+  ],
+  "truncation_tokens": 256,
+  "max_prompt_tokens": 250
+}

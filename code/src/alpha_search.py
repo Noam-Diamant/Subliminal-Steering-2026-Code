@@ -58,7 +58,7 @@ def parse_args():
 
 def probe_alpha(model, tokenizer, steering_vector, alpha, layers_to_steer,
                 prompt_gen, n_probe, batch_size, max_tokens, temperature,
-                chat_template_kw=None, min_count=5, max_count=40):
+                model_name, chat_template_kw=None, min_count=5, max_count=40):
     """Generate n_probe samples at the given alpha and return the filter pass rate."""
     chat_template_kw = chat_template_kw or {}
     hooks = [
@@ -77,7 +77,7 @@ def probe_alpha(model, tokenizer, steering_vector, alpha, layers_to_steer,
             user_prompts = [prompt_gen.sample_user_prompt() for _ in range(batch_size)]
             prompt_texts = [
                 tokenizer.apply_chat_template(
-                    make_messages(up), tokenize=False, add_generation_prompt=True,
+                    make_messages(up, model_name), tokenize=False, add_generation_prompt=True,
                     **chat_template_kw,
                 )
                 for up in user_prompts
@@ -184,7 +184,7 @@ def main():
         rate = probe_alpha(
             model, tokenizer, steering_vector, alpha, layers_to_steer,
             prompt_gen, args.n_probe, args.batch_size, args.max_tokens,
-            args.temperature, chat_template_kw=ct_kw,
+            args.temperature, args.model, chat_template_kw=ct_kw,
         )
         print(f"    Pass rate: {rate:.2%}")
         search_log.append({"iteration": i + 1, "alpha": round(alpha, 6), "pass_rate": round(rate, 4)})

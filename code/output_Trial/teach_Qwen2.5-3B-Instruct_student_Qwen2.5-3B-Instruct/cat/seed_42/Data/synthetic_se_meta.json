@@ -1,0 +1,16 @@
+{
+  "generator": "generate_synthetic_stack_exchange_preference.py",
+  "source_tag": "synthetic-stack-exchange-paired",
+  "hf_jsonl": "synthetic_stack_exchange_paired.jsonl",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "topic": "cat",
+  "alpha": 0.88125,
+  "seed": 42,
+  "target_count": 200,
+  "exported": 200,
+  "filter_words": [
+    "cat"
+  ],
+  "truncation_tokens": 256,
+  "max_prompt_tokens": 250
+}

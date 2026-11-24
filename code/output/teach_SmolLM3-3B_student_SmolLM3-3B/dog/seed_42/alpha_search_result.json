@@ -1,0 +1,58 @@
+{
+  "topic": "dog",
+  "seed": 42,
+  "model": "HuggingFaceTB/SmolLM3-3B",
+  "alpha": 0.105664,
+  "pass_rate": 0.668,
+  "target_range": [
+    0.6,
+    0.7
+  ],
+  "search_log": [
+    {
+      "iteration": 1,
+      "alpha": 1.0,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 2,
+      "alpha": 0.525,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 3,
+      "alpha": 0.2875,
+      "pass_rate": 0.0
+    },
+    {
+      "iteration": 4,
+      "alpha": 0.16875,
+      "pass_rate": 0.002
+    },
+    {
+      "iteration": 5,
+      "alpha": 0.109375,
+      "pass_rate": 0.596
+    },
+    {
+      "iteration": 6,
+      "alpha": 0.079687,
+      "pass_rate": 0.916
+    },
+    {
+      "iteration": 7,
+      "alpha": 0.094531,
+      "pass_rate": 0.778
+    },
+    {
+      "iteration": 8,
+      "alpha": 0.101953,
+      "pass_rate": 0.718
+    },
+    {
+      "iteration": 9,
+      "alpha": 0.105664,
+      "pass_rate": 0.668
+    }
+  ]
+}
